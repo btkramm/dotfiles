@@ -1,0 +1,80 @@
+[core]
+	excludesfile = ~/.config/git/gitignore
+
+# UI --------------------------------------------------------------------------
+
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[diff]
+	colorMoved = default
+
+[delta]
+	line-numbers = true
+
+[column]
+	ui = auto
+
+# Workflow --------------------------------------------------------------------
+
+[branch]
+	sort = -committerdate
+
+[merge]
+	conflictstyle = diff3
+
+[pull]
+	ff = only
+
+[push]
+	autoSetupRemote = true
+
+# Aliases ---------------------------------------------------------------------
+
+[alias]
+	aa = add -A
+	br = branch
+	ci = commit
+	co = checkout
+	lg = log --oneline
+	st = status
+	sw = !sh $DOTDIR/scripts/git-sw.sh
+
+# Performance Optimization ----------------------------------------------------
+
+[core]
+	commitGraph = true
+	compression = 0
+	fsmonitor = false
+	untrackedcache = true
+
+[gc]
+	writeCommitGraph = true
+
+[pack]
+	compression = 6
+
+# Git LFS ---------------------------------------------------------------------
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
+	required = true
+	smudge = git-lfs smudge -- %f
+
+[lfs]
+	locksverify = false
+
+# Conditional Includes --------------------------------------------------------
+
+[includeIf "gitdir:~/personal/"]
+	path = ~/personal/.gitconfig
+
+[includeIf "gitdir:~/work/agf/"]
+	path = ~/work/agf/.gitconfig
+
+[includeIf "gitdir:~/work/afp/"]
+	path = ~/work/afp/.gitconfig

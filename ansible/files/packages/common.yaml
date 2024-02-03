@@ -1,0 +1,38 @@
+packages:
+  - ast-grep
+  - bat
+  - btop
+  - cloc
+  - direnv
+  - dust
+  - eza
+  - fd
+  - ffmpeg
+  - fnm
+  - fzf
+  - gh
+  - git-delta
+  - git-lfs
+  - graphviz
+  - jless
+  - jq
+  - nmap
+  - restic
+  - ripgrep
+  - tldr
+  - unzip
+  - wget
+  - yazi
+  - zip
+  - zoxide
+
+  # NeoVim
+
+  - luarocks
+  - neovim
+
+  # Zsh
+
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
+  - zsh-vi-mode

@@ -1,0 +1,32 @@
+taps:
+  - FelixKratz/formulae
+  - eugene1g/safehouse
+  - koekeishiya/formulae
+  - raine/workmux
+  - smudge/smudge
+
+packages:
+  - coreutils
+
+  # Docker
+
+  - colima
+  - docker
+  - docker-compose
+
+  # AI
+
+  - claude-code
+  - eugene1g/safehouse/agent-safehouse
+  - raine/workmux/workmux
+
+  # Raycast / Night Light
+
+  - smudge/smudge/nightlight
+
+  # yabai & skhd & JankyBorders
+
+  - koekeishiya/formulae/skhd
+  - koekeishiya/formulae/yabai
+
+  - FelixKratz/formulae/borders

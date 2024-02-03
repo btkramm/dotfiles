@@ -1,0 +1,24 @@
+[mgr]
+cwd = { fg = "magenta" } 
+
+[indicator]
+padding = { open = "▐", close = "▌" }
+
+[mode]
+normal_main = { fg = '#0a0c10', bg = 'blue' } 
+select_main = { fg = '#0a0c10', bg = 'yellow' }
+unset_main  = { fg = '#0a0c10', bg = 'green' }
+
+normal_alt  = { fg = '#0a0c10', bg = 'blue', reversed = true} 
+select_alt  = { fg = '#0a0c10', bg = 'yellow', reversed = true }
+unset_alt   = { fg = '#0a0c10', bg = 'green', reversed = true }
+
+[status]
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+[input]
+border = { fg = 'white' }
+
+[filetype]
+rules = [{ name = "*/", fg = "white" }]

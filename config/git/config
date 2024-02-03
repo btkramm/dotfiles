@@ -1,0 +1,42 @@
+[core]
+	excludesfile = ~/.config/git/gitignore
+	pager = delta
+	fsmonitor = true
+	untrackedcache = true
+	commitGraph = true
+	compression = 0
+[interactive]
+	diffFilter = delta --color-only
+[diff]
+	colorMoved = default
+[delta]
+	line-numbers = true
+[alias]
+	aa = add -A
+	br = branch
+	ci = commit
+	co = checkout
+	lg = log --oneline
+	st = status
+	sw = !sh $DOTDIR/scripts/git-sw.sh
+[branch]
+	sort = -committerdate
+[column]
+	ui = auto
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
+	required = true
+	smudge = git-lfs smudge -- %f
+[push]
+	autoSetupRemote = true
+[includeIf "gitdir:~/personal/"]
+	path = ~/personal/.gitconfig
+[includeIf "gitdir:~/work/"]
+	path = ~/work/.gitconfig
+[lfs]
+	locksverify = false
+[gc]
+	writeCommitGraph = true
+[pack]
+	compression = 6

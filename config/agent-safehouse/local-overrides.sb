@@ -1,0 +1,53 @@
+(allow file-read*
+    ;; fnm --------------------------------------------------------------------
+
+    (home-subpath "/.local/share/fnm")
+
+    ;; git --------------------------------------------------------------------
+
+    (home-literal "/personal/.gitconfig")
+
+    (home-literal "/work/afp/.gitconfig")
+    (home-literal "/work/agf/.gitconfig")
+
+    ;; kitty ------------------------------------------------------------------
+
+    (subpath "/Applications/Kitty-Terminal.app")
+
+    (home-subpath "/.config/kitty")
+    (home-subpath "/personal/dotfiles/config/kitty")
+
+    ;; nvim -------------------------------------------------------------------
+
+    (home-subpath "/.config/nvim")
+    (home-subpath "/personal/dotfiles/config/nvim")
+
+    (home-subpath "/.local/share/nvim")
+
+    ;; ssh --------------------------------------------------------------------
+
+    (home-literal "/.ssh/personal.pub")
+
+    (home-literal "/.ssh/work-afp.pub")
+    (home-literal "/.ssh/work-agf.pub")
+
+    ;; workmux ----------------------------------------------------------------
+
+    (home-subpath "/.config/workmux")
+    (home-subpath "/personal/dotfiles/config/workmux")
+)
+
+(allow file-read* file-write*
+    (home-subpath "/.local/state")
+
+    ;; git --------------------------------------------------------------------
+
+    (home-subpath "/.config/git")
+    (home-subpath "/personal/dotfiles/config/git")
+
+    ;; nvim -------------------------------------------------------------------
+
+    (home-literal "/.config/yazi-path")
+
+    (home-subpath "/.cache/nvim")
+)

@@ -1,0 +1,21 @@
+nerdfont: true
+
+merge_strategy: rebase
+
+worktree_naming: basename
+
+status_icons:
+  working: "◉"
+  waiting: "◯"
+  done: "●"
+
+agent: ai
+
+panes:
+  - command: vi
+    focus: true
+  - command: <agent>
+    split: vertical
+
+post_create:
+  - "direnv allow . || true"

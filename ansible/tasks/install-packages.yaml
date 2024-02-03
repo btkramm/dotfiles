@@ -1,0 +1,22 @@
+---
+- name: Set "_taps"
+  ansible.builtin.set_fact:
+    _taps: "{{ (lookup('file', playbook_dir + '/' + packages_file) | from_yaml).taps | default([]) }}"
+
+- name: Set "_packages"
+  ansible.builtin.set_fact:
+    _packages: "{{ (lookup('file', playbook_dir + '/' + packages_file) | from_yaml).packages }}"
+
+- name: Install taps via Homebrew
+  community.general.homebrew_tap:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ _taps }}"
+  when: _taps | length > 0
+
+- name: Install packages via Homebrew
+  community.general.homebrew:
+    name: "{{ _packages }}"
+    state: present
+    path: "{{ '/home/linuxbrew/.linuxbrew/bin' if 'linux' in group_names else omit }}"
+  when: _packages | length > 0

@@ -1,0 +1,34 @@
+(allow file-read*
+    ;; git --------------------------------------------------------------------
+
+    (home-literal "/personal/.gitconfig")
+
+    (home-literal "/work/afp/.gitconfig")
+    (home-literal "/work/agf/.gitconfig")
+
+    ;; fnm --------------------------------------------------------------------
+
+    (home-subpath "/.local/share/fnm")
+    (home-subpath "/.local/state/fnm_multishells")
+
+    ;; kitty ----------------------------------------------------------------
+
+    (home-subpath "/.config/kitty")
+    (home-subpath "/personal/dotfiles/config/kitty")
+
+    ;; workmux ----------------------------------------------------------------
+
+    (home-subpath "/.config/workmux")
+    (home-subpath "/personal/dotfiles/config/workmux")
+)
+
+(allow file-read* file-write*
+    ;; git --------------------------------------------------------------------
+
+    (home-subpath "/.config/git")
+    (home-subpath "/personal/dotfiles/config/git")
+
+    ;; workmux ----------------------------------------------------------------
+
+    (home-subpath "/.local/state/workmux")
+)

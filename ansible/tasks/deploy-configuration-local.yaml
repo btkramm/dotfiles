@@ -1,0 +1,95 @@
+---
+- name: Deploy configuration symlinks for localhost
+  vars:
+    configuration_from_dir: "{{ playbook_dir }}/../../config"
+    configuration_symlinks_to_dir: "{{ ansible_facts.env.HOME }}/.config"
+  block:
+    - name: Create ".hushlogin" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/.hushlogin"
+        dest: "{{ ansible_facts.env.HOME }}/.hushlogin"
+        state: link
+
+    - name: Create ".zshenv" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/zsh/.zshenv"
+        dest: "{{ ansible_facts.env.HOME }}/.zshenv"
+        state: link
+
+    - name: Create "agent-safehouse" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/agent-safehouse"
+        dest: "{{ configuration_symlinks_to_dir }}/agent-safehouse"
+        state: link
+
+    - name: Create "claude" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/claude"
+        dest: "{{ configuration_symlinks_to_dir }}/claude"
+        state: link
+
+    - name: Create "direnv" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/direnv"
+        dest: "{{ configuration_symlinks_to_dir }}/direnv"
+        state: link
+
+    - name: Create "eza" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/eza"
+        dest: "{{ configuration_symlinks_to_dir }}/eza"
+        state: link
+
+    - name: Create "git" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/git"
+        dest: "{{ configuration_symlinks_to_dir }}/git"
+        state: link
+
+    - name: Create "karabiner" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/karabiner"
+        dest: "{{ configuration_symlinks_to_dir }}/karabiner"
+        state: link
+
+    - name: Create "kitty" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/kitty"
+        dest: "{{ configuration_symlinks_to_dir }}/kitty"
+        state: link
+
+    - name: Create "nvim" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/nvim"
+        dest: "{{ configuration_symlinks_to_dir }}/nvim"
+        state: link
+
+    - name: Create "skhd" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/skhd"
+        dest: "{{ configuration_symlinks_to_dir }}/skhd"
+        state: link
+
+    - name: Create "workmux" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/workmux"
+        dest: "{{ configuration_symlinks_to_dir }}/workmux"
+        state: link
+
+    - name: Create "yabai" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/yabai"
+        dest: "{{ configuration_symlinks_to_dir }}/yabai"
+        state: link
+
+    - name: Create "yazi" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/yazi"
+        dest: "{{ configuration_symlinks_to_dir }}/yazi"
+        state: link
+
+    - name: Create "zsh" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/zsh"
+        dest: "{{ configuration_symlinks_to_dir }}/zsh"
+        state: link

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "keybindings": {
+    "terminal.splitRight": ["Ctrl+Shift+V"],
+    "terminal.splitDown": ["Ctrl+Shift+X"],
+    "terminal.focusPreviousPane": ["Ctrl+Shift+H", "Mod+BracketLeft"],
+    "terminal.focusNextPane": ["Ctrl+Shift+L", "Mod+BracketRight"],
+    "terminal.closePane": ["Ctrl+Shift+W", "Mod+W"],
+    "tab.newTerminal": ["Ctrl+Shift+T", "Mod+T"],
+    "tab.previousSameType": ["Ctrl+Shift+BracketLeft", "Mod+Alt+BracketLeft"],
+    "tab.nextSameType": ["Ctrl+Shift+BracketRight", "Mod+Alt+BracketRight"]
+  },
+  "platforms": {
+    "darwin": {},
+    "linux": {},
+    "win32": {}
+  }
+}

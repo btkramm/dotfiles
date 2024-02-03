@@ -1,0 +1,32 @@
+---
+- name: Install Linuxbrew prerequisites via "apt"
+  ansible.builtin.apt:
+    name:
+      - build-essential
+      - curl
+      - file
+      - git
+      - procps
+    state: present
+  become: true
+  when: "'linux' in group_names"
+
+- name: Check if Homebrew is already installed
+  ansible.builtin.shell: |
+    command -v brew || test -f /home/linuxbrew/.linuxbrew/bin/brew
+  register: already_installed
+  failed_when: false
+  changed_when: false
+
+- name: Install Homebrew package manager
+  ansible.builtin.shell: |
+    set -o pipefail && NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+  args:
+    executable: /bin/bash
+  when: already_installed.rc != 0
+  changed_when: true
+
+- name: Display Homebrew installation status
+  ansible.builtin.debug:
+    msg: "Homebrew is already installed and available"
+  when: already_installed.rc == 0

@@ -1,0 +1,43 @@
+---
+- name: Install Homebrew and common packages
+  hosts: all
+
+  tasks:
+    - name: Install Homebrew package manager
+      ansible.builtin.import_tasks: ../tasks/install-homebrew.yaml
+
+    - name: Install common packages
+      ansible.builtin.include_tasks: ../tasks/install-packages.yaml
+      vars:
+        packages_file: ../files/packages/common.yaml
+
+- name: Install macOS-specific packages and deploy local configuration
+  hosts: mac_os
+
+  tasks:
+    - name: Install macOS packages
+      ansible.builtin.include_tasks: ../tasks/install-packages.yaml
+      vars:
+        packages_file: ../files/packages/mac_os.yaml
+
+    - name: Deploy configuration symlinks for localhost
+      ansible.builtin.import_tasks: ../tasks/deploy-configuration-local.yaml
+
+- name: Install linux-specific packages and deploy remote configuration
+  hosts: linux
+
+  tasks:
+    - name: Install Linux common packages
+      ansible.builtin.include_tasks: ../tasks/install-packages.yaml
+      vars:
+        packages_file: ../files/packages/linux_common.yaml
+
+    - name: Deploy configuration files to remote host
+      ansible.builtin.import_tasks: ../tasks/deploy-configuration-remote.yaml
+
+- name: Install desktop applications
+  hosts: desktop
+
+  tasks:
+    - name: Install Kitty terminal emulator
+      ansible.builtin.import_tasks: ../tasks/install-kitty.yaml

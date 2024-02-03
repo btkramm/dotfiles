@@ -1,0 +1,11 @@
+auto-commits: false
+gitignore: false
+subtree-only: true
+
+user-input-color: "#FFFFFF"
+tool-error-color: "#FF9492"
+tool-warning-color: "#F0B72F"
+assistant-output-color: "#D9DEE3"
+
+completion-menu-color: "#F0F3F6"
+completion-menu-bg-color: "#0A0C10"

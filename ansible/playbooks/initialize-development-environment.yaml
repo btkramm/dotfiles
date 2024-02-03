@@ -1,0 +1,23 @@
+---
+- name: Initialize development environment
+  hosts: localhost
+
+  tasks:
+    - name: Install Homebrew package manager
+      ansible.builtin.import_tasks: ../tasks/install-homebrew.yaml
+
+    - name: Install Kitty terminal emulator
+      ansible.builtin.import_tasks: ../tasks/install-kitty.yaml
+
+    - name: Install common packages
+      ansible.builtin.import_tasks: ../tasks/install-packages.yaml
+      vars:
+        packages_file: ../files/packages/common.yaml
+
+    - name: Install MacOS packages
+      ansible.builtin.import_tasks: ../tasks/install-packages.yaml
+      vars:
+        packages_file: ../files/packages/mac_os.yaml
+
+    - name: Create symbolic links
+      ansible.builtin.import_tasks: ../tasks/create-symbolic-links.yaml

@@ -1,0 +1,83 @@
+---
+- name: Create symbolic links
+  vars:
+    from_dir: "{{ playbook_dir }}/../../config"
+    to_dir: "{{ ansible_env.HOME }}/.config"
+  block:
+    - name: Create ".hushlogin" symbolic links
+      ansible.builtin.file:
+        src: "{{ from_dir }}/.hushlogin"
+        dest: "{{ ansible_env.HOME }}/.hushlogin"
+        state: link
+
+    - name: Create ".zshenv" symbolic links
+      ansible.builtin.file:
+        src: "{{ from_dir }}/zsh/.zshenv"
+        dest: "{{ ansible_env.HOME }}/.zshenv"
+        state: link
+
+    - name: Create "claude" symbolic links
+      ansible.builtin.file:
+        src: "{{ from_dir }}/claude"
+        dest: "{{ to_dir }}/claude"
+        state: link
+
+    - name: Create "direnv" symbolic links
+      ansible.builtin.file:
+        src: "{{ from_dir }}/direnv"
+        dest: "{{ to_dir }}/direnv"
+        state: link
+
+    - name: Create "eza" symbolic links
+      ansible.builtin.file:
+        src: "{{ from_dir }}/eza"
+        dest: "{{ to_dir }}/eza"
+        state: link
+
+    - name: Create "git" symbolic links
+      ansible.builtin.file:
+        src: "{{ from_dir }}/git"
+        dest: "{{ to_dir }}/git"
+        state: link
+
+    - name: Create "karabiner" symbolic links
+      ansible.builtin.file:
+        src: "{{ from_dir }}/karabiner"
+        dest: "{{ to_dir }}/karabiner"
+        state: link
+
+    - name: Create "kitty" symbolic links
+      ansible.builtin.file:
+        src: "{{ from_dir }}/kitty"
+        dest: "{{ to_dir }}/kitty"
+        state: link
+
+    - name: Create "nvim" symbolic links
+      ansible.builtin.file:
+        src: "{{ from_dir }}/nvim"
+        dest: "{{ to_dir }}/nvim"
+        state: link
+
+    - name: Create "skhd" symbolic links
+      ansible.builtin.file:
+        src: "{{ from_dir }}/skhd"
+        dest: "{{ to_dir }}/skhd"
+        state: link
+
+    - name: Create "yabai" symbolic links
+      ansible.builtin.file:
+        src: "{{ from_dir }}/yabai"
+        dest: "{{ to_dir }}/yabai"
+        state: link
+
+    - name: Create "yazi" symbolic links
+      ansible.builtin.file:
+        src: "{{ from_dir }}/yazi"
+        dest: "{{ to_dir }}/yazi"
+        state: link
+
+    - name: Create "zsh" symbolic links
+      ansible.builtin.file:
+        src: "{{ from_dir }}/zsh"
+        dest: "{{ to_dir }}/zsh"
+        state: link

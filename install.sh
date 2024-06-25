@@ -1,5 +1,38 @@
 #!/bin/bash
 
+# Install brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# and follow post-install instructions
+#
+# Install Kitty
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+
+# GitHub CLI
+
+brew install gh
+
+# Z
+brew install z
+
+# NeoVim
+brew install neovim
+
+# direnv
+brew install direnv
+
+# RVENV
+brew install rbenv ruby-build
+
+
+# NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+# Coreutils
+brew install coreutils
+
+
+
 for file in shell/*
 do
   fullpath=$(realpath "$file")

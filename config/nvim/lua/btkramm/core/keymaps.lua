@@ -8,16 +8,16 @@ end
 
 -- Copying & Pasting
 
-keymap({ 'n', 'x' }, '<leader>p', '"+p', { desc = 'Paste from clipboard' })
-keymap({ 'n', 'x' }, '<leader>y', '"+y', { desc = 'Yank to clipboard' })
+keymap({ 'n', 'v' }, '<leader>p', '"+p', { desc = 'Paste from clipboard' })
+keymap({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to clipboard' })
 
-keymap({ 'n', 'x' }, '<leader>f', ':let @+ = expand("%:p")<CR>', { desc = 'Copy full path' })
-keymap({ 'n', 'x' }, '<leader>r', ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', { desc = 'Copy relative path' })
+keymap({ 'n', 'v' }, '<leader>f', ':let @+ = expand("%:p")<CR>', { desc = 'Copy full path' })
+keymap({ 'n', 'v' }, '<leader>r', ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', { desc = 'Copy relative path' })
 
 -- Horizontal & Vertical Movement
 
-keymap({ 'n', 'x' }, 'H', '^', { desc = 'Line start' })
-keymap({ 'n', 'x' }, 'L', 'g_', { desc = 'Line end' })
+keymap({ 'n', 'v', 'o' }, 'H', '^', { desc = 'Line start' })
+keymap({ 'n', 'v', 'o' }, 'L', 'g_', { desc = 'Line end' })
 
 keymap('n', 'J', 'jzz', { desc = 'Line down and center' })
 keymap('n', 'K', 'kzz', { desc = 'Line up and center' })
@@ -59,7 +59,7 @@ wk.add({
 
 -- Sorting
 
-keymap('x', '<leader>s', ':sort<CR>', { desc = 'Sort' })
+keymap('v', '<leader>s', ':sort<CR>', { desc = 'Sort' })
 
 -- Windows
 

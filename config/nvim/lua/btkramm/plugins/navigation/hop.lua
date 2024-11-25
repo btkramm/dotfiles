@@ -23,7 +23,7 @@ return {
           require('hop').hint_words({})
         end
       end,
-      mode = { 'n', 'x' },
+      mode = { 'n', 'v' },
       desc = 'Hop - Toggle',
     },
   },

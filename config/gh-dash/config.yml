@@ -72,9 +72,9 @@ keybindings:
 
 repoPaths:
   {
-    fintual/design-system: ~/work/design-system,
+    fintual/design-system: ~/work/design-system/main,
     fintual/mobile-app: ~/work/mobile-app,
-    fintual/web-app: ~/work/web-app,
+    fintual/web-app: ~/work/web-app/main,
   }
 
 theme:

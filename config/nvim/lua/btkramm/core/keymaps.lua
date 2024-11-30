@@ -1,5 +1,3 @@
-local wk = require('which-key')
-
 local keymap = function(mode, lhs, rhs, opts)
   opts = vim.tbl_extend('force', { noremap = true, nowait = true, silent = true }, opts or {})
 
@@ -51,11 +49,6 @@ keymap('n', 'N', 'Nzz', { desc = 'Search - Previous result' })
 keymap('n', 'n', 'nzz', { desc = 'Search - Next result' })
 
 keymap('n', '<ESC>', ':noh<CR>', { desc = 'Search - Clear' })
-
-wk.add({
-  { '/', desc = 'Search - Forward' },
-  { '?', desc = 'Search - Backward' },
-})
 
 -- Sorting
 

@@ -35,13 +35,6 @@ return {
         lsp_references = { preview_title = '', prompt_title = 'LSP References' },
       },
       extensions = {
-        fzf = {
-          fuzzy = true,
-          override_generic_sorter = true,
-          override_file_sorter = true,
-          case_mode = 'smart_case',
-        },
-
         live_grep_args = {
           preview_title = '',
           prompt_title = 'Grep',

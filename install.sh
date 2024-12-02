@@ -19,7 +19,6 @@ brew install nmap # nmap
 brew install ripgrep # ripgrep
 brew install unzip # unzip
 brew install wget # wget
-brew install yazi # yazi
 brew install z # z
 brew install zip # zip
 

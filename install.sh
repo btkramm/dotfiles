@@ -8,6 +8,7 @@ else
   echo "Command \"brew\" is already installed."
 fi
 
+brew install bat # bat
 brew install btop # btop
 brew install direnv # direnv
 brew install fd # fd

@@ -20,8 +20,8 @@ brew install ripgrep # ripgrep
 brew install tree # tree
 brew install unzip # unzip
 brew install wget # wget
-brew install z # z
 brew install zip # zip
+brew install zoxide # zoxide
 
 # GitHub CLI
 

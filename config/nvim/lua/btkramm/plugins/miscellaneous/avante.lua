@@ -50,15 +50,20 @@ return {
       '<leader>aA',
       function()
         local actions = {
-          -- TBD
-          ['Improve code'] = 'Improve the following code',
-          ['Add documentation'] = 'Add documentation to this code',
-          ['Explain code'] = 'Explain what this code does',
-          ['Optimize code'] = 'Optimize this code for better performance',
-          ['Find bugs'] = 'Review this code and find potential bugs',
-          ['Refactor code'] = 'Refactor this code to be more maintainable',
-          ['Improve tests descriptions'] = 'Improve the description of each test',
-          ['Fix ortography'] = 'Find any ortographic mistake',
+          ['Improve - Commit message'] = [[
+Here is a commit message. Please improve it by:
+
+- Find and fix all orthographic errors.
+- Find and fix all grammar errors.
+	
+Please do not modify much of the structure of the commit message, but I allow
+you to adjust it, focusing on its readability as the driving factor.	    
+]],
+
+          ['Improve - Orthography and grammar'] = [[
+- Find and fix all orthographic errors.
+- Find and fix all grammar errors.
+]],
         }
 
         local _, start_row, start_col = unpack(vim.fn.getpos('v'))

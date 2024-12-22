@@ -4,24 +4,17 @@ return {
   opts = {
     keys = 'etovxqpdygfblzhckisuran',
 
-    quit_key = '<CR>',
+    quit_key = '<Tab>',
 
     multi_windows = true,
   },
 
   keys = {
     {
-      '<CR>',
+      '<Tab>',
       function()
-        if vim.bo.buftype == 'quickfix' then
-          if vim.fn.getqflist()[vim.fn.line('.')] then
-            vim.cmd(string.format('cc %d', vim.fn.line('.')))
-            vim.cmd.normal('zz')
-          end
-        else
-          ---@diagnostic disable: missing-fields
-          require('hop').hint_words({})
-        end
+        ---@diagnostic disable: missing-fields
+        require('hop').hint_words({})
       end,
       mode = { 'n', 'v' },
       desc = 'Hop - Toggle',

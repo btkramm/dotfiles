@@ -88,43 +88,5 @@ return {
     { 'gd', require('telescope.builtin').lsp_definitions, desc = 'Telescope - LSP Definitions' },
     { 'gi', require('telescope.builtin').lsp_implementations, desc = 'Telescope - LSP Implementations' },
     { 'gr', require('telescope.builtin').lsp_references, desc = 'Telescope - LSP References' },
-
-    -- TBD
-    {
-      '<D-w>',
-      function()
-        local finders = require('telescope.finders')
-        local pickers = require('telescope.pickers')
-
-        local actions = require('telescope.actions')
-        local actions_state = require('telescope.actions.state')
-
-        local utils = require('telescope.utils')
-
-        local opts = {}
-
-        pickers
-          .new(opts, {
-            prompt_title = 'Git Worktrees',
-            finder = finders.new_oneshot_job({ 'git', 'worktree', 'list' }, opts),
-            attach_mappings = function()
-              actions.select_default:replace(function(prompt_bufnr)
-                actions.close(prompt_bufnr)
-
-                local selection = actions_state.get_selected_entry()
-
-                local splitted = utils.max_split(selection[1])
-                local path = splitted[1]
-
-                vim.cmd('cd ' .. path)
-              end)
-
-              return true
-            end,
-          })
-          :find()
-      end,
-      desc = 'Telescope - Git Worktrees',
-    },
   },
 }

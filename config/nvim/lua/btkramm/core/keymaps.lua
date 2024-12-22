@@ -1,3 +1,5 @@
+local wk = require('which-key')
+
 local keymap = function(mode, lhs, rhs, opts)
   opts = vim.tbl_extend('force', { noremap = true, nowait = true, silent = true }, opts or {})
 
@@ -85,3 +87,20 @@ keymap('n', '<leader>fQ', ':qa<CR>', { desc = 'Quit all (force)' })
 
 keymap('n', '<leader>e', ':e<CR>', { desc = 'Reload' })
 keymap('n', '<leader>fe', ':e!<CR>', { desc = 'Reload (force)' })
+
+-- miscellaneous/avante.lua
+
+wk.add({
+  { '<leader>aa', desc = 'AI - Ask', mode = { 'n', 'v' } },
+  { '<leader>ae', desc = 'AI - Edit', mode = { 'v' } },
+
+  { '<leader>ac', desc = 'AI - Toggle buffer' },
+  { '<leader>as', desc = 'AI - Toggle suggestions' },
+})
+
+vim.keymap.del('n', '<leader>aR')
+vim.keymap.del('n', '<leader>ad')
+vim.keymap.del('n', '<leader>af')
+vim.keymap.del('n', '<leader>ah')
+vim.keymap.del('n', '<leader>ar')
+vim.keymap.del('n', '<leader>at')

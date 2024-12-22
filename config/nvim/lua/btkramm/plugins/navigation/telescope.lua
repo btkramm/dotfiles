@@ -69,7 +69,7 @@ return {
       function()
         require('telescope-live-grep-args.shortcuts').grep_visual_selection()
       end,
-      mode = 'x',
+      mode = 'v',
       desc = 'Telescope - Grep - Visual selection',
     },
     {
@@ -89,7 +89,7 @@ return {
     { 'gi', require('telescope.builtin').lsp_implementations, desc = 'Telescope - LSP Implementations' },
     { 'gr', require('telescope.builtin').lsp_references, desc = 'Telescope - LSP References' },
 
-    -- WIP
+    -- TBD
     {
       '<D-w>',
       function()

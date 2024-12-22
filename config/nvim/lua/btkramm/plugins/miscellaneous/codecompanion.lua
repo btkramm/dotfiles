@@ -83,4 +83,6 @@ return {
       desc = 'AI - Edit',
     },
   },
+
+  enabled = false,
 }

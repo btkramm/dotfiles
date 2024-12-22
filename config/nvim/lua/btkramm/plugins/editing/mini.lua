@@ -1,6 +1,5 @@
 return {
   'echasnovski/mini.nvim',
-  event = 'InsertEnter',
 
   config = function()
     require('mini.ai').setup({
@@ -12,6 +11,8 @@ return {
         inside_next = 'in',
       },
     })
+
+    require('mini.jump').setup()
 
     require('mini.surround').setup({
       mappings = {

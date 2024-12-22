@@ -1,12 +1,25 @@
 vim.opt.laststatus = 3
 
+local fugitive_extension = {
+  sections = {
+    lualine_a = {
+      function()
+        return '' .. ' ' .. vim.fn.FugitiveHead()
+      end,
+    },
+    lualine_z = { 'location' },
+  },
+
+  filetypes = { 'fugitive', 'git', 'gitcommit' },
+}
+
 return {
   'nvim-lualine/lualine.nvim',
 
   opts = {
     sections = {
-      lualine_a = {},
-      lualine_b = { 'branch', 'diff', 'diagnostics' },
+      lualine_a = { 'FugitiveHead' },
+      lualine_b = { 'diff', 'diagnostics' },
       lualine_c = {
         { 'filename', path = 1 },
       },
@@ -26,6 +39,6 @@ return {
 
     options = { section_separators = '', component_separators = '' },
 
-    extensions = { 'fugitive', 'quickfix' },
+    extensions = { fugitive_extension, 'quickfix' },
   },
 }

@@ -52,31 +52,3 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash 
 # Ruby
 
 brew install rbenv ruby-build # rbenv
-
-for file in shell/*
-do
-  fullpath=$(realpath "$file")
-
-  source="source $fullpath"
-
-  if grep -q "$source" ~/.zshrc; then
-    echo "$source is already installed."
-  else
-    read -r -p "Source $file? (Y/n): " response
-
-    if [ -z "$response" ] || [ "$response" = "y" ]; then
-      echo "$source" >> ~/.zshrc
-    fi
-  fi
-done
-
-for from in config/*
-do
-  from_fullpath=$(realpath "$from")
-  to_fullpath="$HOME/.$from"
-
-  if ! [ -e "$to_fullpath" ]; then
-    ln -s "$from_fullpath" "$to_fullpath"
-  fi
-done
-

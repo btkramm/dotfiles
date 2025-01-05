@@ -6,3 +6,9 @@
 # Karabiner
 
 config/karabiner/automatic_backups/
+
+# Zsh
+
+config/zsh/.zcompdump
+config/zsh/.zsh_history
+config/zsh/modules/secrets.sh

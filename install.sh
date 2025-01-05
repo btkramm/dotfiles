@@ -24,6 +24,7 @@ brew install unzip # unzip
 brew install wget # wget
 brew install zip # zip
 brew install zoxide # zoxide
+brew install zsh-syntax-highlighting # zsh-syntax-highlighting
 
 # GitHub CLI
 

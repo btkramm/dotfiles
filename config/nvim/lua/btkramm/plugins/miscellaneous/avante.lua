@@ -1,5 +1,5 @@
 return {
-  'btkramm/avante.nvim',
+  'yetone/avante.nvim',
   version = false,
   build = 'make',
   event = 'VeryLazy',

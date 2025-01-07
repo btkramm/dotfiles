@@ -6,7 +6,7 @@ local keymap = function(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
--- Copying & Pasting
+-- Copying and pasting
 
 keymap({ 'n', 'v' }, '<leader>p', '"+p', { desc = 'Paste from clipboard' })
 keymap({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to clipboard' })
@@ -14,7 +14,7 @@ keymap({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to clipboard' })
 keymap({ 'n', 'v' }, '<leader>f', ':let @+ = expand("%:p")<CR>', { desc = 'Copy full path' })
 keymap({ 'n', 'v' }, '<leader>r', ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', { desc = 'Copy relative path' })
 
--- Horizontal & Vertical Movement
+-- Horizontal and vertical movement
 
 keymap({ 'n', 'v', 'o' }, 'H', '^', { desc = 'Line start' })
 keymap({ 'n', 'v', 'o' }, 'L', 'g_', { desc = 'Line end' })

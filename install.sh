@@ -19,6 +19,7 @@ fi
 # Zsh -------------------------------------------------------------------------
 
 brew install zsh-syntax-highlighting # zsh-syntax-highlighting
+brew install zsh-vi-mode # zsh-vi-mode
 
 # GitHub CLI ------------------------------------------------------------------
 

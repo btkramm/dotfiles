@@ -62,5 +62,6 @@ brew install ripgrep # ripgrep
 brew install tldr # tldr
 brew install unzip # unzip
 brew install wget # wget
+brew install yazi # yazi
 brew install zip # zip
 brew install zoxide # zoxide

@@ -68,5 +68,14 @@ return {
     -- Zig
 
     require('lspconfig').zls.setup({ capabilities = capabilities })
+
+    -- Ruby
+
+    require('lspconfig').ruby_lsp.setup({
+      init_options = {
+        formatter = 'standard',
+        linters = { 'standard' },
+      },
+    })
   end,
 }

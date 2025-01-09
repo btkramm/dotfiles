@@ -5,6 +5,12 @@ prSections:
   - title: My Pull Requests
     filters: is:open author:@me
 
+  - title: "@nacho's Pull Requests"
+    filters: is:open author:nacho_fintual
+
+  - title: "@tamara's Pull Requests"
+    filters: is:open author:tamara_fintual
+
   - title: Involved
     filters: is:open involves:@me -author:@me
 

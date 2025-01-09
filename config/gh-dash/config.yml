@@ -78,18 +78,12 @@ keybindings:
     - key: esc
       command: ":"
 
-    - key: q
-      command: ":"
-
   issues:
     - key: O
       command: >
         kitty @ launch --copy-env --type=tab --tab-title="#{{.IssueNumber}}" --cwd={{.RepoPath}} nvim -c ":Octo issue edit {{.IssueNumber}}"
 
     - key: esc
-      command: ":"
-
-    - key: q
       command: ":"
 
 repoPaths:

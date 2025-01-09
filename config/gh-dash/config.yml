@@ -70,10 +70,10 @@ keybindings:
         kitty @ launch --copy-env --type=tab --tab-title="#{{.PrNumber}}" --cwd={{.RepoPath}} nvim -c ":Octo pr diff {{.PrNumber}}"
 
     - key: esc
-      command: ""
+      command: ":"
 
     - key: q
-      command: ""
+      command: ":"
 
   issues:
     - key: O
@@ -81,10 +81,10 @@ keybindings:
         kitty @ launch --copy-env --type=tab --tab-title="#{{.IssueNumber}}" --cwd={{.RepoPath}} nvim -c ":Octo issue edit {{.IssueNumber}}"
 
     - key: esc
-      command: ""
+      command: ":"
 
     - key: q
-      command: ""
+      command: ":"
 
 repoPaths:
   {

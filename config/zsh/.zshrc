@@ -2,22 +2,18 @@ PS1="%n %1~ %# "
 
 # zsh-vi-mode -----------------------------------------------------------------
 
-ZVM_INIT_MODE=sourcing
-
 ZVM_VI_SURROUND_BINDKEY="s-prefix"
 
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 function zvm_after_init() {
-  # History navigation
-  
-  bindkey -M vicmd 'n' down-line-or-history
-  bindkey -M vicmd 'N' up-line-or-history
+  zvm_bindkey vicmd 'H' beginning-of-line
+  zvm_bindkey vicmd 'L' end-of-line
 
-  # Horizontal movement
+  # fzf -----------------------------------------------------------------------
 
-  bindkey -M vicmd 'H' beginning-of-line
-  bindkey -M vicmd 'L' end-of-line
+  source $(brew --prefix)/opt/fzf/shell/completion.zsh
+  source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
 }
 
 # Modules ---------------------------------------------------------------------

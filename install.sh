@@ -25,6 +25,7 @@ brew install zsh-vi-mode # zsh-vi-mode
 
 brew install gh # gh
 
+gh extension install benelan/gh-fzf # gh-fzf
 gh extension install dlvhdr/gh-dash # gh-dash
 
 # yabai & skhd ----------------------------------------------------------------

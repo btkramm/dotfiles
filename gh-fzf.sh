@@ -20,16 +20,16 @@ function get_readable_timestamp() {
 
   if [[ $diff -le 60 ]]; then
     echo "$diff seconds ago"
-  elif [[ $diff -le $((60*60)) ]]; then
+  elif [[ $diff -le $((60 * 60)) ]]; then
     echo "$((diff / (60))) minutes ago"
-  elif [[ $diff -le $((60*60*24)) ]]; then
-    echo "$((diff / (60*60))) hours ago"
-  elif [[ $diff -le $((60*60*24*2)) ]]; then
+  elif [[ $diff -le $((60 * 60 * 24)) ]]; then
+    echo "$((diff / (60 * 60))) hours ago"
+  elif [[ $diff -le $((60 * 60 * 24 * 2)) ]]; then
     echo "Yesterday"
-  elif [[ $diff -le $((60*60*24*7)) ]]; then
-    echo "$((diff / (60*60*24))) days ago"
+  elif [[ $diff -le $((60 * 60 * 24 * 7)) ]]; then
+    echo "$((diff / (60 * 60 * 24))) days ago"
   else
-    echo "$((diff / (60*60*24*7))) weeks ago"
+    echo "$((diff / (60 * 60 * 24 * 7))) weeks ago"
   fi
 }
 
@@ -56,21 +56,21 @@ function get_readable_review_decision() {
 }
 
 function fetch_author_me_prs() {
-    local search_query="$1"
+  local search_query="$1"
 
-     gh pr list --search "$search_query" \
-	--json number,headRepository,mergeable,reviewDecision,createdAt,title,headRepositoryOwner \
-	-R "$2" \
-	| jq -r
+  gh pr list --search "$search_query" \
+    --json number,headRepository,mergeable,reviewDecision,createdAt,title,headRepositoryOwner \
+    -R "$2" \
+    | jq -r
 }
 
 function fetch_review_requested_me_prs() {
-    local search_query="$1"
+  local search_query="$1"
 
-     gh pr list --search "$search_query" \
-	--json number,headRepository,mergeable,reviewDecision,createdAt,title,author,headRepositoryOwner \
-	-R "$2" \
-	| jq -r 
+  gh pr list --search "$search_query" \
+    --json number,headRepository,mergeable,reviewDecision,createdAt,title,author,headRepositoryOwner \
+    -R "$2" \
+    | jq -r
 }
 
 # Fetching --------------------------------------------------------------------
@@ -111,7 +111,7 @@ author_me_prs=$(
 review_requested_me_prs_json=$(jq -s 'add' "$design_system_review_requested_me_prs" "$mobile_app_review_requested_me_prs" "$web_app_review_requested_me_prs")
 
 review_requested_me_prs=$(
-jq -r '.[] | "#\(.number)\t\(.headRepository.name)\t\(.mergeable)\t\(.reviewDecision)\t\(.createdAt)\t\(.title)\t\(.author.login)"' <<< "$review_requested_me_prs_json" \
+  jq -r '.[] | "#\(.number)\t\(.headRepository.name)\t\(.mergeable)\t\(.reviewDecision)\t\(.createdAt)\t\(.title)\t\(.author.login)"' <<< "$review_requested_me_prs_json" \
     | while IFS=$'\t' read -r number head_repository mergeable review_decision created_at title author; do
       readable_review_decision=$(get_readable_review_decision "$review_decision")
       readable_mergeable=$(get_readable_mergeable "$mergeable")
@@ -131,9 +131,10 @@ author_me_prs_header=$(echo -e "${GRAY}author:@me${END_COLOR}")
 author_me_prs_body=$(printf "%s\n" "$author_me_prs" | column -t -s $'\t' -c 80)
 
 review_requested_me_prs_header=$(echo -e "${GRAY}review-requested:@me${END_COLOR}")
-review_requested_me_prs_body=$(printf  "%s\n" "$review_requested_me_prs" | column -t -s $'\t' -c 80)
+review_requested_me_prs_body=$(printf "%s\n" "$review_requested_me_prs" | column -t -s $'\t' -c 80)
 
-all_prs=$(cat << EOF
+all_prs=$(
+  cat << EOF
 ${author_me_prs_header}
 ${author_me_prs_body}
 ${review_requested_me_prs_header}
@@ -145,7 +146,7 @@ EOF
 
 while true; do
   pr=$(echo "$all_prs" | fzf --ansi --tac)
-  
+
   if [ -z "$pr" ]; then
     break
   fi

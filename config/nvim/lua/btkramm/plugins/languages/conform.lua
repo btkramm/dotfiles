@@ -5,6 +5,10 @@ return {
     local conform = require('conform')
 
     conform.setup({
+      formatters = {
+        shfmt = { args = { '-i', '2', '-bn', '-ci', '-kp', '-s', '-sr' } },
+      },
+
       formatters_by_ft = {
         -- Prettier
 
@@ -26,6 +30,10 @@ return {
         -- Stylua
 
         lua = { 'stylua' },
+
+        -- shfmt
+
+        sh = { 'shfmt' },
       },
       format_on_save = { lsp_format = 'fallback' },
     })

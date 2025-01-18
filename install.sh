@@ -27,10 +27,6 @@ brew install zsh-vi-mode # zsh-vi-mode
 brew install koekeishiya/formulae/skhd # skhd
 brew install koekeishiya/formulae/yabai # yabai
 
-# Node.js ---------------------------------------------------------------------
-
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash # nvm
-
 # Ruby ------------------------------------------------------------------------
 
 brew install rbenv ruby-build # rbenv

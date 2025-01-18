@@ -50,6 +50,7 @@ brew install btop # btop
 brew install direnv # direnv
 brew install eza # eza
 brew install fd # fd
+brew install fnm # fnm
 brew install fzf # fzf
 brew install gh # gh
 brew install jq # jq

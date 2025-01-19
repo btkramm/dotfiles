@@ -77,17 +77,17 @@ function fetch_review_requested_me_prs() {
 
 tmp_dir=$(mktemp -d)
 
-design_system_author_me_prs="$tmp_dir/design_author"
-mobile_app_author_me_prs="$tmp_dir/mobile_author"
-web_app_author_me_prs="$tmp_dir/web_author"
-
-design_system_review_requested_me_prs="$tmp_dir/design_review"
-mobile_app_review_requested_me_prs="$tmp_dir/mobile_review"
-web_app_review_requested_me_prs="$tmp_dir/web_review"
+design_system_author_me_prs="$(mktemp -p "$tmp_dir")"
+mobile_app_author_me_prs="$(mktemp -p "$tmp_dir")"
+web_app_author_me_prs="$(mktemp -p "$tmp_dir")"
 
 fetch_author_me_prs "is:open author:@me" "fintual/design-system" > "$design_system_author_me_prs" &
 fetch_author_me_prs "is:open author:@me" "fintual/mobile-app" > "$mobile_app_author_me_prs" &
 fetch_author_me_prs "is:open author:@me" "fintual/web-app" > "$web_app_author_me_prs" &
+
+design_system_review_requested_me_prs="$(mktemp -p "$tmp_dir")"
+mobile_app_review_requested_me_prs="$(mktemp -p "$tmp_dir")"
+web_app_review_requested_me_prs="$(mktemp -p "$tmp_dir")"
 
 fetch_review_requested_me_prs "is:open user-review-requested:@me" "fintual/design-system" > "$design_system_review_requested_me_prs" &
 fetch_review_requested_me_prs "is:open user-review-requested:@me" "fintual/mobile-app" > "$mobile_app_review_requested_me_prs" &
@@ -95,7 +95,7 @@ fetch_review_requested_me_prs "is:open user-review-requested:@me" "fintual/web-a
 
 wait
 
-author_me_prs_json=$(jq -s 'add' "$design_system_author_me_prs" "$web_app_author_me_prs" "$mobile_app_author_me_prs")
+author_me_prs_json=$(jq -s 'add' "$design_system_author_me_prs" "$mobile_app_author_me_prs" "$web_app_author_me_prs")
 
 author_me_prs=$(
   jq -r '.[] | "#\(.number)\t\(.headRepository.name)\t\(.mergeable)\t\(.reviewDecision)\t\(.createdAt)\t\(.title)"' <<< "$author_me_prs_json" \

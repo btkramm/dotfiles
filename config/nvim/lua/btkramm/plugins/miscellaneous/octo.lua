@@ -13,8 +13,8 @@ return {
     enable_builtin = true,
 
     ssh_aliases = {
-      ['github.com%-personal'] = 'github.com',
-      ['github.com%-work'] = 'github.com',
+      ['github.com-personal'] = 'github.com',
+      ['github.com-work'] = 'github.com',
     },
 
     timeout = 10000,

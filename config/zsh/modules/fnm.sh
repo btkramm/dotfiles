@@ -1,1 +1,1 @@
-eval "$(fnm env --shell zsh --corepack-enabled --resolve-engines --use-on-cd)"
+eval "$(fnm env --shell zsh --corepack-enabled --log-level error --resolve-engines --use-on-cd)"

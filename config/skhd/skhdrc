@@ -73,10 +73,14 @@ shift + lalt - s : open -a /Applications/Slack.app
 
 # Focus application window
 
-lalt - b : yabai -m window --focus $(yabai -m query --windows | jq 'map(select(.app == "Google Chrome")) | .[0].id')
-lalt - c : yabai -m window --focus $(yabai -m query --windows | jq 'map(select(.app == "Excalidraw")) | .[0].id')
-lalt - s : yabai -m window --focus $(yabai -m query --windows | jq 'map(select(.app == "Slack")) | .[0].id')
+# The sed command "s/,[\s\n]*]/]/g" fixes a JSON parsing issue by removing
+# trailing commas that sometimes appear in yabai's JSON output. This ensures
+# "jq" can properly parse the window information. 
+
+lalt - b : yabai -m window --focus $(yabai -m query --windows | sed 's/,[\s\n]*]/]/g' | jq 'map(select(.app == "Google Chrome")) | .[0].id')
+lalt - c : yabai -m window --focus $(yabai -m query --windows | sed 's/,[\s\n]*]/]/g' | jq 'map(select(.app == "Excalidraw")) | .[0].id')
+lalt - s : yabai -m window --focus $(yabai -m query --windows | sed 's/,[\s\n]*]/]/g' | jq 'map(select(.app == "Slack")) | .[0].id')
 
 # Focus application space
 
-lalt - backspace : yabai -m space --focus $(yabai -m query --windows | jq 'map(select(.app == "Simulator" or .app == "qemu-system-aarch64")) | .[0].space')
+lalt - backspace : yabai -m space --focus $(yabai -m query --windows | sed 's/,[\s\n]*]/]/g' | jq 'map(select(.app == "Simulator" or .app == "qemu-system-aarch64")) | .[0].space')

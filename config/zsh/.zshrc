@@ -1,13 +1,13 @@
 setopt PROMPT_SUBST
 
 get_prompt() {
-  if git rev-parse --is-inside-work-tree &> /dev/null; then
+  if git rev-parse --is-inside-work-tree &> /dev/null && \
+    [ "$(git rev-parse --is-bare-repository)" = "false" ]; then
     fullpath=$(git rev-parse --show-toplevel)
 
-    repository_name=$(basename "$(dirname "$fullpath")")
     worktree_name=$(basename "$fullpath")
 
-    echo "%n $repository_name:$worktree_name %# "
+    echo "%n %1~ [$worktree_name] %# "
   else
     echo "%n %1~ %# "
   fi

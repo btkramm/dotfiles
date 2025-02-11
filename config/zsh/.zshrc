@@ -7,7 +7,7 @@ get_prompt() {
 
     worktree_name=$(basename "$fullpath")
 
-    echo "%n %1~ [$worktree_name] %# "
+    echo "%n %1~ [%F{magenta}$worktree_name%f] %# "
   else
     echo "%n %1~ %# "
   fi

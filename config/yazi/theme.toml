@@ -1,5 +1,5 @@
 [manager]
-cwd = { fg = "red" } 
+cwd = { fg = "magenta" } 
 
 [mode]
 normal_main = { fg = '#0a0c10', bg = 'blue' } 

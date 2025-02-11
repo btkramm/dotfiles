@@ -1,6 +1,7 @@
 auto-commits: false
 gitignore: false
 subtree-only: true
+multiline: true
 
 user-input-color: "#FFFFFF"
 tool-error-color: "#FF9492"

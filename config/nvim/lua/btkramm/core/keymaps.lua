@@ -98,12 +98,12 @@ wk.add({
   { '<leader>ae', desc = 'AI - Edit', mode = { 'v' } },
 
   { '<leader>ac', desc = 'AI - Toggle buffer' },
+  { '<leader>ar', desc = 'AI - Refresh' },
   { '<leader>as', desc = 'AI - Toggle suggestions' },
+  { '<leader>at', desc = 'AI - Toggle' },
 })
 
 vim.keymap.del('n', '<leader>aR')
 vim.keymap.del('n', '<leader>ad')
 vim.keymap.del('n', '<leader>af')
 vim.keymap.del('n', '<leader>ah')
-vim.keymap.del('n', '<leader>ar')
-vim.keymap.del('n', '<leader>at')

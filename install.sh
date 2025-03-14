@@ -51,6 +51,7 @@ brew install fnm # fnm
 brew install fzf # fzf
 brew install gh # gh
 brew install git-delta # delta
+brew install git-lfs # lfs
 brew install graphviz # graphviz
 brew install jq # jq
 brew install nmap # nmap

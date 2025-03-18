@@ -6,7 +6,7 @@ return {
   opts = {
     cmdline = { enabled = true, view = 'cmdline' },
 
-    messages = { view = 'mini', view_error = 'mini', view_warn = 'mini' },
+    messages = { enabled = false, view = 'mini', view_error = 'mini', view_warn = 'mini' },
 
     notify = { enabled = false },
 
@@ -18,7 +18,7 @@ return {
       mini = {
         position = { row = -1, col = 0 },
         size = { width = '100%' },
-        align = "left",
+        align = 'left',
       },
     },
   },

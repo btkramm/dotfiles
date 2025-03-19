@@ -21,6 +21,8 @@ get_prompt() {
 
 PS1='$(get_prompt)'
 
+export PATH="/opt/homebrew/bin:$PATH"
+
 # compinit --------------------------------------------------------------------
 
 autoload -Uz compinit && compinit

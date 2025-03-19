@@ -11,3 +11,5 @@ export VISUAL="nvim"
 export MANPAGER='nvim +Man!'
 
 [[ -f "$ZDOTDIR/modules/secrets.sh" ]] && source "$ZDOTDIR/modules/secrets.sh"
+
+export CLAUDE_CONFIG_DIR="$HOME/.config/claude"

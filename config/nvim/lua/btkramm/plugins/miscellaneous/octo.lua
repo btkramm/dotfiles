@@ -7,6 +7,9 @@ return {
   },
   lazy = false,
 
+  -- https://github.com/pwntester/octo.nvim/issues/1010
+  priority = 1001,
+
   opts = {
     use_local_fs = true,
 

@@ -3,6 +3,7 @@
 	pager = delta
 	fsmonitor = true
 	untrackedcache = true
+	commitGraph = true
 [interactive]
 	diffFilter = delta --color-only
 [diff]

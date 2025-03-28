@@ -36,6 +36,10 @@ return {
     },
 
     use_default_keymaps = false,
+
+    float = {
+      preview_split = 'right',
+    },
   },
 
   keys = {

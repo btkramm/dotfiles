@@ -12,7 +12,8 @@ return {
     watch_for_changes = true,
 
     keymaps = {
-      ['<CR>'] = 'actions.select',
+      ['h'] = 'actions.parent',
+      ['l'] = 'actions.select',
 
       ['<C-x>'] = {
         'actions.select',
@@ -27,9 +28,6 @@ return {
 
       ['<Esc>'] = 'actions.close',
       ['q'] = 'actions.close',
-
-      ['-'] = 'actions.parent',
-      ['_'] = 'actions.open_cwd',
 
       ['<C-.>'] = 'actions.toggle_hidden',
       ['<C\\>'] = 'actions.toggle_trash',

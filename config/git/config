@@ -4,6 +4,7 @@
 	fsmonitor = true
 	untrackedcache = true
 	commitGraph = true
+	compression = 0
 [interactive]
 	diffFilter = delta --color-only
 [diff]
@@ -36,3 +37,5 @@
 	locksverify = false
 [gc]
 	writeCommitGraph = true
+[pack]
+	compression = 6

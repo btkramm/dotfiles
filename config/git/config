@@ -2,6 +2,7 @@
 	excludesfile = ~/.config/git/gitignore
 	pager = delta
 	fsmonitor = true
+	untrackedcache = true
 [interactive]
 	diffFilter = delta --color-only
 [diff]

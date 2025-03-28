@@ -12,6 +12,8 @@ return {
     watch_for_changes = true,
 
     keymaps = {
+      ['<CR>'] = 'actions.select',
+
       ['h'] = 'actions.parent',
       ['l'] = 'actions.select',
 

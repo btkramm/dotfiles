@@ -8,18 +8,20 @@ get_prompt() {
     parent_dirname=$(basename "$(dirname "$git_dir")")
 
     if [ "$parent_dirname" = "worktrees" ]; then
+      branch_name=$(git branch --show-current)
       worktree_name=$(basename "$git_dir")
 
-      echo "%n %1~ [%F{magenta}$worktree_name%f] %# "
+      echo "%n %2~ [%F{magenta}$worktree_name%f/%F{cyan}$branch_name%f]"
 
       return
     fi
   fi
 
-  echo "%n %1~ %# "
+  echo "%n %2~"
 }
 
-PS1='$(get_prompt)'
+PS1_NEWLINE=$'\n'
+PS1='$(get_prompt)${PS1_NEWLINE}⏵ '
 
 export PATH="/opt/homebrew/bin:$PATH"
 

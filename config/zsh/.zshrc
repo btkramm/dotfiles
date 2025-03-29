@@ -47,7 +47,6 @@ function zvm_after_init() {
 
 # /modules/ -------------------------------------------------------------------
 
-source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/aider.sh
 source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/aliases.sh
 source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/android.sh
 source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/direnv.sh

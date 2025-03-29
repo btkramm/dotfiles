@@ -18,6 +18,7 @@
 	co = checkout
 	lg = log --oneline
 	st = status
+	sw = switch
 [branch]
 	sort = -committerdate
 [column]

@@ -22,13 +22,29 @@ end
 
 return {
   'tpope/vim-fugitive',
+  dependencies = { 'tpope/vim-rhubarb' },
   lazy = false,
 
   keys = {
-    { '<leader>g', ':G<CR>', desc = 'Fugitive - Git status' },
+    {
+      '<leader>b',
+      function()
+        local git_bufnr = find_buffer_with_filetype('fugitiveblame')
+
+        if git_bufnr then
+          focus_buffer(git_bufnr)
+        else
+          vim.cmd('G blame')
+        end
+      end,
+      desc = 'Fugitive - Open Git blame',
+    },
+    { '<leader>b', '<C-w>q', ft = 'fugitiveblame', desc = 'Fugitive - Close Git blame' },
+
+    { '<leader>g', ':G<CR>', desc = 'Fugitive - Open Git status' },
     { '<leader>g', '<C-w>q', ft = 'fugitive', desc = 'Fugitive - Close Git status' },
 
-    { '<leader>G', ':vertical G<CR>', desc = 'Fugitive - Git status (vertical)' },
+    { '<leader>G', ':vertical G<CR>', desc = 'Fugitive - Open Git status (vertical)' },
     { '<leader>G', '<C-w>q', ft = 'fugitive', desc = 'Fugitive - Close Git status (vertical)' },
 
     {
@@ -60,5 +76,7 @@ return {
       desc = 'Fugitive - Open Git log (vertical)',
     },
     { '<leader>L', '<C-w>q', ft = 'git', desc = 'Fugitive - Close Git log (vertical)' },
+
+    { '<leader>x', ':GBrowse<CR>', desc = 'Fugitive - Git browse' },
   },
 }

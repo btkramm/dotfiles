@@ -54,6 +54,7 @@ source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/fintual.sh
 source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/flutter.sh
 source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/fnm.sh
 source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/fzf.sh
+source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/yazi.sh
 source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/zoxide.sh
 
 # zsh-autosuggestions -----------------------------------------------------

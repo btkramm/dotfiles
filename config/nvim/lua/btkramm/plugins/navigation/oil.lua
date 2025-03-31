@@ -33,6 +33,9 @@ return {
 
       ['<C-.>'] = 'actions.toggle_hidden',
       ['<C\\>'] = 'actions.toggle_trash',
+
+      [',v'] = '<NOP>',
+      [',x'] = '<NOP>',
     },
 
     use_default_keymaps = false,

@@ -40,6 +40,13 @@ keymap('n', 'gh', vim.lsp.buf.hover, { desc = 'LSP - Hover' })
 
 keymap('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'LSP - Rename' })
 
+-- Scrolling
+
+keymap('n', '<left>', 'zh')
+keymap('n', '<down>', '<C-e>')
+keymap('n', '<up>', '<C-y>')
+keymap('n', '<right>', 'zl')
+
 -- Searching
 
 keymap('n', '#', '#zz', { desc = 'Search - Word under cursor backward' })

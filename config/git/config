@@ -18,7 +18,7 @@
 	co = checkout
 	lg = log --oneline
 	st = status
-	sw = !sh ~/personal/dotfiles/main/scripts/git-sw.sh
+	sw = !sh $DOTDIR/scripts/git-sw.sh
 [branch]
 	sort = -committerdate
 [column]

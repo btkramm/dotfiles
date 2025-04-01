@@ -79,5 +79,13 @@ return {
         linters = { 'standard' },
       },
     })
+
+    -- Python
+
+    require('lspconfig').pyright.setup({
+      capabilities = capabilities,
+
+      filetypes = { 'python' },
+    })
   end,
 }

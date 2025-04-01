@@ -49,6 +49,25 @@ return {
       },
     })
 
+    -- Python
+
+    require('lspconfig').pyright.setup({
+      capabilities = capabilities,
+
+      filetypes = { 'python' },
+    })
+
+    -- Ruby
+
+    require('lspconfig').ruby_lsp.setup({
+      capabilities = capabilities,
+
+      init_options = {
+        formatter = 'standard',
+        linters = { 'standard' },
+      },
+    })
+
     -- Stylelint
 
     require('lspconfig').stylelint_lsp.setup({ capabilities = capabilities })
@@ -68,24 +87,5 @@ return {
     -- Zig
 
     require('lspconfig').zls.setup({ capabilities = capabilities })
-
-    -- Ruby
-
-    require('lspconfig').ruby_lsp.setup({
-      capabilities = capabilities,
-
-      init_options = {
-        formatter = 'standard',
-        linters = { 'standard' },
-      },
-    })
-
-    -- Python
-
-    require('lspconfig').pyright.setup({
-      capabilities = capabilities,
-
-      filetypes = { 'python' },
-    })
   end,
 }

@@ -20,8 +20,6 @@ return {
       ['github.com-work'] = 'github.com',
     },
 
-    timeout = 10000,
-
     file_panel = { use_icons = false },
   },
 

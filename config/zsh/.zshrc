@@ -5,16 +5,21 @@ get_prompt() {
                                           && [ "$(git rev-parse --is-bare-repository)" = "false" ]; then
     git_dir=$(git rev-parse --git-dir)
 
+    branch_name=$(git branch --show-current)
+
     parent_dirname=$(basename "$(dirname "$git_dir")")
 
     if [ "$parent_dirname" = "worktrees" ]; then
-      branch_name=$(git branch --show-current)
       worktree_name=$(basename "$git_dir")
 
       echo "%n %2~ [%F{magenta}$worktree_name%f/%F{cyan}$branch_name%f]"
 
       return
     fi
+    
+    echo "%n %2~ [%F{cyan}$branch_name%f]"
+
+    return
   fi
 
   echo "%n %2~"

@@ -29,4 +29,6 @@ return {
     { '#', '#<C-x><C-o>', mode = 'i', ft = 'octo' },
     { '@', '@<C-x><C-o>', mode = 'i', ft = 'octo' },
   },
+
+  enabled = false,
 }

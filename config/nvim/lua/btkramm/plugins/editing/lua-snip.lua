@@ -5,7 +5,7 @@ return {
 
     'rafamadriz/friendly-snippets',
   },
-  -- sudo luarocks install jsregexp
+  build = 'make install_jsregexp',
 
   config = function()
     require('luasnip.loaders.from_vscode').lazy_load()

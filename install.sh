@@ -27,6 +27,10 @@ brew install zsh-vi-mode # zsh-vi-mode
 brew install koekeishiya/formulae/skhd # skhd
 brew install koekeishiya/formulae/yabai # yabai
 
+# Python ----------------------------------------------------------------------
+
+brew install pipx
+
 # Ruby ------------------------------------------------------------------------
 
 brew install rbenv ruby-build # rbenv

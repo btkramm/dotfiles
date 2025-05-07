@@ -16,4 +16,5 @@ config/zsh/modules/secrets.sh
 
 # Claude Code
 
+config/claude/__store.db
 config/claude/config.json

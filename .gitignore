@@ -18,3 +18,4 @@ config/zsh/modules/secrets.sh
 
 config/claude/__store.db
 config/claude/config.json
+config/claude/todos

@@ -51,18 +51,18 @@ echo "$prs_as_columns" | fzf \
 
     preview {} \"$prs_json_path\"
   " \
+  --bind "ctrl-d:execute(
+    source $DIRNAME/lib/diff.sh;
+
+    diff {} \"$prs_json_path\"
+  )" \
   --bind "ctrl-o:execute(
     source $DIRNAME/lib/open_in_nvim.sh;
 
     open_in_nvim {} \"$prs_json_path\"
   )" \
-  --bind "enter:execute(
+  --bind "ctrl-x:execute(
     source $DIRNAME/lib/open_in_web.sh;
 
     open_in_web {} \"$prs_json_path\"
-  )" \
-  --bind "ctrl-d:execute(
-    source $DIRNAME/lib/diff.sh;
-
-    diff {} \"$prs_json_path\"
   )"

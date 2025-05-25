@@ -49,6 +49,7 @@ brew install bat # bat
 brew install btop # btop
 brew install cloc # cloc
 brew install direnv # direnv
+brew install dust # dust
 brew install eza # eza
 brew install fd # fd
 brew install fnm # fnm

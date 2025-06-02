@@ -7,6 +7,9 @@ return {
       ui = { border = 'rounded' },
     })
 
-    require('mason-lspconfig').setup({ automatic_installation = true })
+    require('mason-lspconfig').setup({
+      automatic_enable = false,
+      automatic_installation = true,
+    })
   end,
 }

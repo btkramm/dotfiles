@@ -17,8 +17,8 @@ yabai -m config                                 \
     window_animation_frame_rate  60             \
     window_opacity_duration      0.0            \
     active_window_opacity        1.0            \
-    normal_window_opacity        0.9            \
-    window_opacity               on             \
+    normal_window_opacity        1.0            \
+    window_opacity               off            \
     insert_feedback_color        0xFFD75F5F     \
     split_ratio                  0.50           \
     split_type                   auto           \
@@ -39,3 +39,7 @@ yabai -m rule --add app="^Stocks$" title=".*" manage=off
 yabai -m rule --add app="^System Settings$" title=".*" manage=off
 
 yabai -m rule --add app="^1Password$" title=".*" manage=off
+
+# JankyBorders
+
+borders active_color=0xFFF0F3F6 inactive_color=0x00F0F3F6 width=6.0 hidpi=on &

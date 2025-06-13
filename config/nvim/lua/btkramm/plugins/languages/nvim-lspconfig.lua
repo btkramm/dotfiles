@@ -8,25 +8,13 @@ return {
       virtual_text = true,
     })
 
-    vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = 'rounded',
-    })
-
-    vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = 'rounded',
-    })
-
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
     -- Bash
 
-    require('lspconfig').bashls.setup({ capabilities = capabilities })
+    require('lspconfig').bashls.setup({})
 
     -- ESLint
 
     require('lspconfig').eslint.setup({
-      capabilities = capabilities,
-
       on_attach = function(_, bufnr)
         vim.api.nvim_create_autocmd('BufWritePre', {
           buffer = bufnr,
@@ -38,8 +26,6 @@ return {
     -- Lua
 
     require('lspconfig').lua_ls.setup({
-      capabilities = capabilities,
-
       settings = {
         Lua = {
           diagnostics = {
@@ -52,16 +38,12 @@ return {
     -- Python
 
     require('lspconfig').pyright.setup({
-      capabilities = capabilities,
-
       filetypes = { 'python' },
     })
 
     -- Ruby
 
     require('lspconfig').ruby_lsp.setup({
-      capabilities = capabilities,
-
       init_options = {
         formatter = 'standard',
         linters = { 'standard' },
@@ -70,13 +52,11 @@ return {
 
     -- Stylelint
 
-    require('lspconfig').stylelint_lsp.setup({ capabilities = capabilities })
+    require('lspconfig').stylelint_lsp.setup({})
 
     -- TypeScript
 
     require('lspconfig').ts_ls.setup({
-      capabilities = capabilities,
-
       init_options = {
         preferences = {
           disableSuggestions = true,
@@ -86,6 +66,6 @@ return {
 
     -- Zig
 
-    require('lspconfig').zls.setup({ capabilities = capabilities })
+    require('lspconfig').zls.setup({})
   end,
 }

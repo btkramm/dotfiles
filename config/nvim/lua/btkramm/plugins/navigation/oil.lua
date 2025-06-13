@@ -14,8 +14,8 @@ return {
     keymaps = {
       ['<CR>'] = 'actions.select',
 
-      ['h'] = 'actions.parent',
-      ['l'] = 'actions.select',
+      ['H'] = 'actions.parent',
+      ['L'] = 'actions.select',
 
       ['<C-x>'] = {
         'actions.select',

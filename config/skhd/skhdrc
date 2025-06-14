@@ -66,6 +66,7 @@ shift + cmd - 9 : yabai -m window --space $(yabai -m query --spaces | jq -r 'map
 # Open application
 
 lalt - return : open -a /Applications/Kitty\ Terminal.app
+cmd - 0x2B    : kitten quick-access-terminal -o background_opacity=0.95
 
 shift + lalt - b : open -a /Applications/Google\ Chrome.app
 shift + lalt - c : open -a ~/Applications/Chrome\ Apps.localized/Excalidraw.app/

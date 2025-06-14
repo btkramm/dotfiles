@@ -19,10 +19,25 @@ return {
       indent = { enable = true },
 
       -- nvim-autopairs
+
       autopairs = { enable = true },
 
       -- nvim-ts-autotag
+
       autotag = { enable = false },
+
+      incremental_selection = {
+        enable = true,
+
+        keymaps = {
+          init_selection = '<CR>',
+
+          node_incremental = false,
+          node_decremental = '<BS>',
+
+          scope_incremental = '<CR>',
+        },
+      },
     })
   end,
 }

@@ -8,6 +8,10 @@ return {
       virtual_text = true,
     })
 
+    -- Ansible
+
+    vim.lsp.enable('ansiblels')
+
     -- Bash
 
     vim.lsp.enable('bashls')

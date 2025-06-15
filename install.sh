@@ -27,7 +27,7 @@ brew install zsh-vi-mode # zsh-vi-mode
 brew install koekeishiya/formulae/yabai # yabai
 brew install koekeishiya/formulae/skhd # skhd
 
-brew tap FelixKratz/formulae && brew install borders # JankyBorders
+brew install FelixKratz/formulae/borders # JankyBorders
 
 # Python ----------------------------------------------------------------------
 
@@ -45,11 +45,11 @@ brew install luarocks # luarocks
 
 # Miscellaneous ---------------------------------------------------------------
 
-brew install coreutils # GNU coreutils
-
+brew install ansible # ansible
 brew install bat # bat
 brew install btop # btop
 brew install cloc # cloc
+brew install coreutils # GNU coreutils
 brew install direnv # direnv
 brew install dust # dust
 brew install eza # eza
@@ -62,6 +62,7 @@ brew install git-lfs # lfs
 brew install graphviz # graphviz
 brew install jq # jq
 brew install nmap # nmap
+brew install restic # restic
 brew install ripgrep # ripgrep
 brew install tldr # tldr
 brew install unzip # unzip

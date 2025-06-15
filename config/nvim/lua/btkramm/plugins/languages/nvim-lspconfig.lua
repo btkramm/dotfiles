@@ -10,11 +10,13 @@ return {
 
     -- Bash
 
-    require('lspconfig').bashls.setup({})
+    vim.lsp.enable('bashls')
 
     -- ESLint
 
-    require('lspconfig').eslint.setup({
+    vim.lsp.enable('eslint')
+
+    vim.lsp.config('eslint', {
       on_attach = function(_, bufnr)
         vim.api.nvim_create_autocmd('BufWritePre', {
           buffer = bufnr,
@@ -25,7 +27,9 @@ return {
 
     -- Lua
 
-    require('lspconfig').lua_ls.setup({
+    vim.lsp.enable('lua_ls')
+
+    vim.lsp.config('lua_ls', {
       settings = {
         Lua = {
           diagnostics = {
@@ -37,13 +41,17 @@ return {
 
     -- Python
 
-    require('lspconfig').pyright.setup({
+    vim.lsp.enable('pyright')
+
+    vim.lsp.config('pyright', {
       filetypes = { 'python' },
     })
 
     -- Ruby
 
-    require('lspconfig').ruby_lsp.setup({
+    vim.lsp.enable('ruby_lsp')
+
+    vim.lsp.config('ruby_lsp', {
       init_options = {
         formatter = 'standard',
         linters = { 'standard' },
@@ -52,11 +60,13 @@ return {
 
     -- Stylelint
 
-    require('lspconfig').stylelint_lsp.setup({})
+    vim.lsp.enable('stylelint_lsp')
 
     -- TypeScript
 
-    require('lspconfig').ts_ls.setup({
+    vim.lsp.enable('ts_ls')
+
+    vim.lsp.config('ts_ls', {
       init_options = {
         preferences = {
           disableSuggestions = true,
@@ -66,6 +76,6 @@ return {
 
     -- Zig
 
-    require('lspconfig').zls.setup({})
+    vim.lsp.enable('zls')
   end,
 }

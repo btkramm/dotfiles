@@ -26,6 +26,7 @@ return {
         opts = { vertical = true, split = 'belowright' },
       },
 
+      ['<C-l>'] = 'actions.refresh',
       ['<C-p>'] = 'actions.preview',
 
       ['<Esc>'] = 'actions.close',

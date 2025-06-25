@@ -12,8 +12,6 @@ return {
   config = function()
     ---@diagnostic disable: missing-fields
     require('nvim-treesitter.configs').setup({
-      ensure_installed = 'all',
-
       highlight = { enable = true },
 
       indent = { enable = true },

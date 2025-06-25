@@ -2,7 +2,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 export ZDOTDIR="$HOME/.config/zsh"
 
-export DOTDIR="$HOME/personal/dotfiles/main"
+export DOTDIR="$(dirname "$(dirname "$(dirname "$(realpath "${(%):-%x}")")")")"
 
 export HISTSIZE=10000
 export SAVEHIST=10000

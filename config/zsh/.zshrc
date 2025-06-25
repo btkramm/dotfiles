@@ -43,7 +43,15 @@ get_prompt() {
 PS1_NEWLINE=$'\n'
 PS1='$(get_prompt)${PS1_NEWLINE}⏵ '
 
-export PATH="/opt/homebrew/bin:$PATH"
+# brew ------------------------------------------------------------------------
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+fi
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 # compinit --------------------------------------------------------------------
 

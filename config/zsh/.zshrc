@@ -67,15 +67,15 @@ function zvm_after_init() {
 
 # /modules/ -------------------------------------------------------------------
 
-source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/aliases.sh
-source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/android.sh
-source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/direnv.sh
-source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/fintual.sh
-source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/flutter.sh
-source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/fnm.sh
-source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/fzf.sh
-source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/yazi.sh
-source /Users/btkramm/personal/dotfiles/main/config/zsh/modules/zoxide.sh
+source $ZDOTDIR/modules/aliases.sh
+source $ZDOTDIR/modules/android.sh
+source $ZDOTDIR/modules/direnv.sh
+source $ZDOTDIR/modules/fintual.sh
+source $ZDOTDIR/modules/flutter.sh
+source $ZDOTDIR/modules/fnm.sh
+source $ZDOTDIR/modules/fzf.sh
+source $ZDOTDIR/modules/yazi.sh
+source $ZDOTDIR/modules/zoxide.sh
 
 # zsh-autosuggestions -----------------------------------------------------
 
@@ -83,7 +83,7 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-syntax-highlighting -----------------------------------------------------
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # pipx
 

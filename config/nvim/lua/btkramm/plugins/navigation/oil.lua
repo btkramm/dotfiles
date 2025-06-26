@@ -29,8 +29,8 @@ return {
       ['<C-l>'] = 'actions.refresh',
       ['<C-p>'] = 'actions.preview',
 
-      ['<Esc>'] = 'actions.close',
-      ['q'] = 'actions.close',
+      ['<Esc>'] = { 'actions.close', mode = 'n' },
+      ['q'] = { 'actions.close', mode = 'n' },
 
       ['<C-.>'] = 'actions.toggle_hidden',
       ['<C\\>'] = 'actions.toggle_trash',

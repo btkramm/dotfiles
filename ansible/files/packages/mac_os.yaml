@@ -1,0 +1,13 @@
+packages:
+  - coreutils
+
+  # Raycast / Night Light
+
+  - smudge/smudge/nightlight
+
+  # yabai & skhd & JankyBorders
+
+  - koekeishiya/formulae/skhd
+  - koekeishiya/formulae/yabai
+
+  - FelixKratz/formulae/borders

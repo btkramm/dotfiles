@@ -1,0 +1,5 @@
+---
+- name: Install development packages via Homebrew
+  community.general.homebrew:
+    name: "{{ (lookup('file', playbook_dir + '/' + packages_file) | from_yaml).packages }}"
+    state: present

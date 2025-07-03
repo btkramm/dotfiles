@@ -11,8 +11,8 @@ select_alt  = { fg = '#0a0c10', bg = 'yellow', reversed = true }
 unset_alt   = { fg = '#0a0c10', bg = 'green', reversed = true }
 
 [status]
-separator_open  = ""
-separator_close = ""
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
 
 [input]
 border = { fg = 'white' }

@@ -85,6 +85,8 @@ source $ZDOTDIR/modules/fzf.sh
 source $ZDOTDIR/modules/yazi.sh
 source $ZDOTDIR/modules/zoxide.sh
 
+export PATH="$PATH:$DOTDIR/scripts"
+
 # zsh-autosuggestions -----------------------------------------------------
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -7,7 +7,9 @@ return {
       opts = { max_lines = 2 },
     },
   },
+  branch = 'master',
   build = ':TSUpdate',
+  lazy = false,
 
   config = function()
     ---@diagnostic disable: missing-fields

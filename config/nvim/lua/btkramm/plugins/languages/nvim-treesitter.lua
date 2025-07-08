@@ -30,10 +30,10 @@ return {
         keymaps = {
           init_selection = '<CR>',
 
-          node_incremental = false,
+          node_incremental = '<CR>',
           node_decremental = '<BS>',
 
-          scope_incremental = '<CR>',
+          scope_incremental = false,
         },
       },
     })

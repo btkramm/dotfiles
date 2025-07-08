@@ -25,7 +25,16 @@ return {
       },
       lualine_x = {},
       lualine_y = { 'location' },
-      lualine_z = {},
+      lualine_z = {
+        {
+          function()
+            return require('grapple').name_or_index()
+          end,
+          cond = function()
+            return package.loaded['grapple'] and require('grapple').exists()
+          end,
+        },
+      },
     },
 
     inactive_sections = {

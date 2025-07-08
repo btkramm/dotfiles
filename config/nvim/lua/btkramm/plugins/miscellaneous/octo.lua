@@ -1,7 +1,7 @@
 return {
   'pwntester/octo.nvim',
   dependencies = {
-    'nvim-telescope/telescope.nvim',
+    'ibhagwan/fzf-lua',
 
     'nvim-lua/plenary.nvim',
   },
@@ -16,6 +16,8 @@ return {
       ['github.com-personal'] = 'github.com',
       ['github.com-work'] = 'github.com',
     },
+
+    picker = 'fzf-lua',
 
     file_panel = { use_icons = false },
   },

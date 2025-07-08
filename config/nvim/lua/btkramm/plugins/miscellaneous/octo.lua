@@ -14,7 +14,7 @@ return {
 
     ssh_aliases = {
       ['github.com-personal'] = 'github.com',
-      ['github.com-work'] = 'github.com',
+      ['github.com'] = 'github.com',
     },
 
     picker = 'fzf-lua',

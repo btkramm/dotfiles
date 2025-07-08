@@ -20,8 +20,8 @@ keymap({ 'n', 'v', 'o' }, 'L', 'g_', { desc = 'Line end' })
 keymap('n', 'J', 'jzz', { desc = 'Line down and center' })
 keymap('n', 'K', 'kzz', { desc = 'Line up and center' })
 
-keymap('n', '{', '<C-u>zz', { desc = 'Page up and center' })
-keymap('n', '}', '<C-d>zz', { desc = 'Page down and center' })
+keymap('n', '<C-d>', '<C-d>zz', { desc = 'Page down and center' })
+keymap('n', '<C-u>', '<C-u>zz', { desc = 'Page up and center' })
 
 -- Indentation
 

@@ -1,18 +1,39 @@
 [core]
 	excludesfile = ~/.config/git/gitignore
+
+# UI --------------------------------------------------------------------------
+
+[core]
 	pager = delta
-	fsmonitor = true
-	untrackedcache = true
-	commitGraph = true
-	compression = 0
+
 [interactive]
 	diffFilter = delta --color-only
+
 [diff]
 	colorMoved = default
+
 [delta]
 	line-numbers = true
+
+[column]
+	ui = auto
+
+# Workflow --------------------------------------------------------------------
+
+[branch]
+	sort = -committerdate
+
 [merge]
 	conflictstyle = diff3
+
+[pull]
+	ff = only
+
+[push]
+	autoSetupRemote = true
+
+# Aliases ---------------------------------------------------------------------
+
 [alias]
 	aa = add -A
 	br = branch
@@ -21,26 +42,36 @@
 	lg = log --oneline
 	st = status
 	sw = !sh $DOTDIR/scripts/git-sw.sh
-[branch]
-	sort = -committerdate
-[column]
-	ui = auto
+
+# Performance Optimization ----------------------------------------------------
+
+[core]
+	commitGraph = true
+	compression = 0
+	fsmonitor = true
+	untrackedcache = true
+
+[gc]
+	writeCommitGraph = true
+
+[pack]
+	compression = 6
+
+# Git LFS ---------------------------------------------------------------------
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	process = git-lfs filter-process
 	required = true
 	smudge = git-lfs smudge -- %f
-[push]
-	autoSetupRemote = true
-[includeIf "gitdir:~/personal/"]
-	path = ~/personal/.gitconfig
-[includeIf "gitdir:~/work/"]
-	path = ~/work/.gitconfig
+
 [lfs]
 	locksverify = false
-[gc]
-	writeCommitGraph = true
-[pack]
-	compression = 6
-[pull]
-	ff = only
+
+# Conditional Includes --------------------------------------------------------
+
+[includeIf "gitdir:~/personal/"]
+	path = ~/personal/.gitconfig
+
+[includeIf "gitdir:~/work/"]
+	path = ~/work/.gitconfig

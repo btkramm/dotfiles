@@ -3,6 +3,9 @@ vim.api.nvim_set_hl(0, 'FloatTitle', { fg = '#F0F3F6' })
 vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#F0F3F6' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
 
+vim.api.nvim_set_hl(0, 'NuiFloatBorder', { link = 'FloatBorder' })
+vim.api.nvim_set_hl(0, 'NuiNormalFloat', { link = 'NormalFloat' })
+
 -- blink.cmp
 
 vim.api.nvim_set_hl(0, 'BlinkCmpScrollBarThumb', { bg = '#F0F3F6' })

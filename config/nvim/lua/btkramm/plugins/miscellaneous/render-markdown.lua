@@ -1,10 +1,8 @@
-vim.treesitter.language.register('markdown', 'octo')
-
 return {
   'MeanderingProgrammer/render-markdown.nvim',
 
   opts = {
-    file_types = { 'markdown', 'octo' },
+    file_types = { 'markdown' },
 
     heading = { enabled = false },
 

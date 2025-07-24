@@ -6,6 +6,8 @@ return {
 
     fzf.setup({
       defaults = {
+        prompt = '> ',
+
         file_icons = false,
         git_icons = false,
 
@@ -83,6 +85,8 @@ return {
         },
       },
     })
+
+    fzf.register_ui_select()
   end,
 
   keys = {
@@ -90,7 +94,7 @@ return {
       '<D-o>',
       function()
         require('fzf-lua').buffers({
-          winopts = { title = 'Open Files' },
+          winopts = { title = ' Open Files ' },
         })
       end,
       desc = 'fzf - Open Files',
@@ -99,7 +103,7 @@ return {
       '<D-p>',
       function()
         require('fzf-lua').files({
-          winopts = { title = 'Files' },
+          winopts = { title = ' Files ' },
         })
       end,
       desc = 'fzf - Files',
@@ -109,7 +113,7 @@ return {
       '<D-S-g>',
       function()
         require('fzf-lua').grep_cword({
-          winopts = { title = 'Grep' },
+          winopts = { title = ' Grep ' },
         })
       end,
       desc = 'fzf - Grep - Word under cursor',
@@ -118,7 +122,7 @@ return {
       '<D-S-g>',
       function()
         require('fzf-lua').grep_visual({
-          winopts = { title = 'Grep' },
+          winopts = { title = ' Grep ' },
         })
       end,
       mode = 'v',
@@ -128,7 +132,7 @@ return {
       '<D-g>',
       function()
         require('fzf-lua').live_grep({
-          winopts = { title = 'Grep' },
+          winopts = { title = ' Grep ' },
         })
       end,
       desc = 'fzf - Live Grep',
@@ -138,7 +142,7 @@ return {
       '<D-S-c>',
       function()
         require('fzf-lua').git_bcommits({
-          winopts = { title = 'Buffer Git Commits' },
+          winopts = { title = ' Buffer Git Commits ' },
         })
       end,
       desc = 'fzf - Buffer Git Commits',
@@ -147,7 +151,7 @@ return {
       '<D-b>',
       function()
         require('fzf-lua').git_branches({
-          winopts = { title = 'Git Branches' },
+          winopts = { title = ' Git Branches ' },
         })
       end,
       desc = 'fzf - Git Branches',
@@ -156,7 +160,7 @@ return {
       '<D-l>',
       function()
         require('fzf-lua').git_commits({
-          winopts = { title = 'Git Commits' },
+          winopts = { title = ' Git Commits ' },
         })
       end,
       desc = 'fzf - Git Commits',
@@ -166,7 +170,7 @@ return {
       '<D-f>',
       function()
         require('fzf-lua').diagnostics_workspace({
-          winopts = { title = 'LSP Diagnostics' },
+          winopts = { title = ' LSP Diagnostics ' },
         })
       end,
       desc = 'fzf - LSP Diagnostics',
@@ -175,7 +179,7 @@ return {
       'gd',
       function()
         require('fzf-lua').lsp_definitions({
-          winopts = { title = 'LSP Definitions' },
+          winopts = { title = ' LSP Definitions ' },
         })
       end,
       desc = 'fzf - LSP Definitions',
@@ -184,7 +188,7 @@ return {
       'gi',
       function()
         require('fzf-lua').lsp_implementations({
-          winopts = { title = 'LSP Implementations' },
+          winopts = { title = ' LSP Implementations ' },
         })
       end,
       desc = 'fzf - LSP Implementations',
@@ -193,10 +197,19 @@ return {
       'gr',
       function()
         require('fzf-lua').lsp_references({
-          winopts = { title = 'LSP References' },
+          winopts = { title = ' LSP References ' },
         })
       end,
       desc = 'fzf - LSP References',
+    },
+    {
+      'ga',
+      function()
+        require('fzf-lua').lsp_code_actions({
+          winopts = { title = ' LSP Code Actions ' },
+        })
+      end,
+      desc = 'fzf - LSP Code Actions',
     },
   },
 }

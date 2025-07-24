@@ -79,8 +79,8 @@ keymap('n', '<C-w>', ':vertical resize +8<CR>', { desc = 'Make window wider' })
 
 -- Writing, quitting and reloading
 
-keymap('n', '<leader>w', ':wa<CR>', { desc = 'Write all' })
-keymap('n', '<leader>fw', ':wa!<CR>', { desc = 'Write all (force)' })
+keymap('n', '<leader>w', ':w<CR>', { desc = 'Write' })
+keymap('n', '<leader>fw', ':w!<CR>', { desc = 'Write (force)' })
 
 keymap('n', '<leader>q', ':q<CR>', { desc = 'Quit' })
 keymap('n', '<leader>fq', ':q!<CR>', { desc = 'Quit (force)' })

@@ -20,6 +20,22 @@ return {
 
     vim.lsp.enable('eslint')
 
+    vim.lsp.config('eslint', {
+      on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd('BufWritePre', {
+          buffer = bufnr,
+          callback = function()
+            if client.supports_method('textDocument/codeAction') then
+              vim.lsp.buf.code_action({
+                context = { only = { 'source.fixAll' }, diagnostics = {} },
+                apply = true,
+              })
+            end
+          end,
+        })
+      end,
+    })
+
     -- Lua
 
     vim.lsp.enable('lua_ls')

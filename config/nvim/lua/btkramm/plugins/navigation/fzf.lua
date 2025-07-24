@@ -90,15 +90,8 @@ return {
   end,
 
   keys = {
-    {
-      '<D-o>',
-      function()
-        require('fzf-lua').buffers({
-          winopts = { title = ' Open Files ' },
-        })
-      end,
-      desc = 'fzf - Open Files',
-    },
+    -- Search
+
     {
       '<D-p>',
       function()
@@ -108,7 +101,27 @@ return {
       end,
       desc = 'fzf - Files',
     },
+    {
+      '<D-o>',
+      function()
+        require('fzf-lua').buffers({
+          winopts = { title = ' Open Files ' },
+        })
+      end,
+      desc = 'fzf - Open Files',
+    },
 
+    -- Grep
+
+    {
+      '<D-g>',
+      function()
+        require('fzf-lua').live_grep({
+          winopts = { title = ' Grep ' },
+        })
+      end,
+      desc = 'fzf - Live Grep',
+    },
     {
       '<D-S-g>',
       function()
@@ -128,25 +141,9 @@ return {
       mode = 'v',
       desc = 'fzf - Grep - Visual selection',
     },
-    {
-      '<D-g>',
-      function()
-        require('fzf-lua').live_grep({
-          winopts = { title = ' Grep ' },
-        })
-      end,
-      desc = 'fzf - Live Grep',
-    },
 
-    {
-      '<D-S-c>',
-      function()
-        require('fzf-lua').git_bcommits({
-          winopts = { title = ' Buffer Git Commits ' },
-        })
-      end,
-      desc = 'fzf - Buffer Git Commits',
-    },
+    -- Git
+
     {
       '<D-b>',
       function()
@@ -165,16 +162,18 @@ return {
       end,
       desc = 'fzf - Git Commits',
     },
-
     {
-      '<D-f>',
+      '<D-S-c>',
       function()
-        require('fzf-lua').diagnostics_workspace({
-          winopts = { title = ' LSP Diagnostics ' },
+        require('fzf-lua').git_bcommits({
+          winopts = { title = ' Buffer Git Commits ' },
         })
       end,
-      desc = 'fzf - LSP Diagnostics',
+      desc = 'fzf - Buffer Git Commits',
     },
+
+    -- LSP
+
     {
       'gd',
       function()
@@ -183,15 +182,6 @@ return {
         })
       end,
       desc = 'fzf - LSP Definitions',
-    },
-    {
-      'gi',
-      function()
-        require('fzf-lua').lsp_implementations({
-          winopts = { title = ' LSP Implementations ' },
-        })
-      end,
-      desc = 'fzf - LSP Implementations',
     },
     {
       'gr',
@@ -203,6 +193,15 @@ return {
       desc = 'fzf - LSP References',
     },
     {
+      'gi',
+      function()
+        require('fzf-lua').lsp_implementations({
+          winopts = { title = ' LSP Implementations ' },
+        })
+      end,
+      desc = 'fzf - LSP Implementations',
+    },
+    {
       'ga',
       function()
         require('fzf-lua').lsp_code_actions({
@@ -210,6 +209,15 @@ return {
         })
       end,
       desc = 'fzf - LSP Code Actions',
+    },
+    {
+      '<D-f>',
+      function()
+        require('fzf-lua').diagnostics_workspace({
+          winopts = { title = ' LSP Diagnostics ' },
+        })
+      end,
+      desc = 'fzf - LSP Diagnostics',
     },
   },
 }

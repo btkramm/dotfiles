@@ -56,7 +56,14 @@ return {
       },
 
       git = {
-        branches = { cmd = 'git branch --color' },
+        branches = {
+          cmd = 'git branch --color',
+
+          actions = {
+            ['ctrl-x'] = false,
+            ['ctrl-d'] = { fn = fzf.actions.git_branch_del, reload = true },
+          },
+        },
       },
 
       grep = {

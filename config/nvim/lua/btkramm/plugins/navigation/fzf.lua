@@ -5,8 +5,6 @@ return {
     local fzf = require('fzf-lua')
 
     fzf.setup({
-      { 'ivy' },
-
       defaults = {
         file_icons = false,
         git_icons = false,

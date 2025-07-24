@@ -63,6 +63,9 @@ return {
             ['ctrl-x'] = false,
             ['ctrl-d'] = { fn = fzf.actions.git_branch_del, reload = true },
           },
+
+          cmd_add = { 'git', 'checkout', '-b' },
+          cmd_del = { 'git', 'branch', '--delete', '--force' },
         },
       },
 

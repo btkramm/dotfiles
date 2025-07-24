@@ -1,41 +1,37 @@
 return {
   'stevearc/conform.nvim',
 
-  config = function()
-    local conform = require('conform')
+  opts = {
+    formatters = {
+      shfmt = { args = { '-i', '2', '-bn', '-ci', '-kp', '-s', '-sr' } },
+    },
 
-    conform.setup({
-      formatters = {
-        shfmt = { args = { '-i', '2', '-bn', '-ci', '-kp', '-s', '-sr' } },
-      },
+    formatters_by_ft = {
+      -- Prettier
 
-      formatters_by_ft = {
-        -- Prettier
+      javascript = { 'prettierd' },
+      javascriptreact = { 'prettierd' },
+      typescript = { 'prettierd' },
+      typescriptreact = { 'prettierd' },
 
-        javascript = { 'prettierd' },
-        javascriptreact = { 'prettierd' },
-        typescript = { 'prettierd' },
-        typescriptreact = { 'prettierd' },
+      css = { 'prettierd' },
+      html = { 'prettierd' },
 
-        css = { 'prettierd' },
-        html = { 'prettierd' },
+      graphql = { 'prettierd' },
 
-        graphql = { 'prettierd' },
+      json = { 'prettierd' },
+      yaml = { 'prettierd' },
 
-        json = { 'prettierd' },
-        yaml = { 'prettierd' },
+      markdown = { 'prettierd' },
 
-        markdown = { 'prettierd' },
+      -- Stylua
 
-        -- Stylua
+      lua = { 'stylua' },
 
-        lua = { 'stylua' },
+      -- shfmt
 
-        -- shfmt
-
-        sh = { 'shfmt' },
-      },
-      format_on_save = { lsp_format = 'fallback' },
-    })
-  end,
+      sh = { 'shfmt' },
+    },
+    format_on_save = { lsp_format = 'fallback' },
+  },
 }

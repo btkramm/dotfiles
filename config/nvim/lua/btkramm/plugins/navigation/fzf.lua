@@ -57,7 +57,7 @@ return {
 
       git = {
         branches = {
-          cmd = 'git branch --color',
+          cmd = 'git br --color --format="%(if)%(HEAD)%(then)* %(color:green)%(else)  %(if)%(worktreepath)%(then)%(color:cyan)%(else)%(color:white)%(end)%(end)%(refname:short)%(color:reset)"',
 
           actions = {
             ['ctrl-x'] = false,

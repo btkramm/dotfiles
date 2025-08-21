@@ -1,4 +1,4 @@
-alias ai="claude"
+alias ai="claude --dangerously-skip-permissions"
 
 alias cd="z"
 

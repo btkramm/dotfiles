@@ -216,7 +216,7 @@ return {
     {
       '<D-f>',
       function()
-        require('fzf-lua').diagnostics_workspace({
+        require('fzf-lua').lsp_document_diagnostics({
           winopts = { title = ' LSP Diagnostics ' },
         })
       end,

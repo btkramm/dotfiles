@@ -9,10 +9,10 @@ return {
     formatters_by_ft = {
       -- Prettier
 
-      javascript = { 'prettierd' },
-      javascriptreact = { 'prettierd' },
-      typescript = { 'prettierd' },
-      typescriptreact = { 'prettierd' },
+      javascript = { 'biome' },
+      javascriptreact = { 'biome' },
+      typescript = { 'biome' },
+      typescriptreact = { 'biome' },
 
       css = { 'prettierd' },
       html = { 'prettierd' },

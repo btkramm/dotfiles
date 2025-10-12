@@ -93,6 +93,7 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# pipx
+# Python
 
-export PATH="$PATH:/Users/btkramm/.local/bin"
+export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH" # python@3.13
+export PATH="$PATH:/Users/btkramm/.local/bin" # pipx

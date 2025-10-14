@@ -27,7 +27,7 @@ return {
           callback = function()
             if client.supports_method('textDocument/codeAction') then
               vim.lsp.buf.code_action({
-                context = { only = { 'source.fixAll' }, diagnostics = {} },
+                context = { only = { 'source.fixAll.eslint' }, diagnostics = {} },
                 apply = true,
               })
             end

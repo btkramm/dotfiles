@@ -42,6 +42,7 @@ return {
     use_default_keymaps = false,
 
     float = {
+      border = 'rounded',
       preview_split = 'right',
     },
   },

@@ -9,7 +9,13 @@ if vim.filetype then
       ['.*/playbooks/.*%.ya?ml'] = 'yaml.ansible',
       ['.*/roles/.*/tasks/.*%.ya?ml'] = 'yaml.ansible',
       ['.*/roles/.*/handlers/.*%.ya?ml'] = 'yaml.ansible',
-      ['.*/tasks/.*%.ya?ml'] = 'yaml.ansible',
+      ['.*/tasks/.*%.ya?ml'] = function(path)
+        if path:match('/files/') then
+          return 'yaml'
+        else
+          return 'yaml.ansible'
+        end
+      end,
       ['.*/molecule/.*%.ya?ml'] = 'yaml.ansible',
     },
   })
@@ -38,7 +44,11 @@ else
       '*/molecule/*.yaml',
     },
     callback = function()
-      vim.bo.filetype = 'yaml.ansible'
+      local path = vim.fn.expand('%:p')
+
+      if not (path:match('/tasks/') and path:match('/files/')) then
+        vim.bo.filetype = 'yaml.ansible'
+      end
     end,
   })
 end

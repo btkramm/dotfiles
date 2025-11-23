@@ -19,10 +19,6 @@ return {
 
     -- Git & Fugitive
 
-    vim.api.nvim_set_hl(0, 'gitHash', { fg = '#DBB7FF' })
-
-    vim.api.nvim_set_hl(0, 'fugitiveHash', { fg = '#DBB7FF' })
-
     vim.api.nvim_set_hl(0, 'Added', {
       bg = BG:blend(C(palette.scale.green[3]), 0.075):to_css(),
       fg = C(palette.scale.green[3]):to_css(),

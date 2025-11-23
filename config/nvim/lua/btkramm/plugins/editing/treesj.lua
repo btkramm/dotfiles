@@ -12,21 +12,6 @@ return {
 
   keys = {
     {
-      '<leader>j',
-      function()
-        require('treesj').join()
-      end,
-      desc = 'Join syntax tree',
-    },
-    {
-      '<leader>s',
-      function()
-        require('treesj').split()
-      end,
-      desc = 'Split syntax tree',
-    },
-
-    {
       '<leader>t',
       function()
         require('treesj').toggle()

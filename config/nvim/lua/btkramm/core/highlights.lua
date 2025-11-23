@@ -3,6 +3,16 @@ vim.api.nvim_set_hl(0, 'FloatTitle', { fg = '#F0F3F6' })
 vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#F0F3F6' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
 
+-- Git & Fugitive
+
+vim.api.nvim_set_hl(0, 'gitHash', { fg = '#DBB7FF' })
+
+vim.api.nvim_set_hl(0, 'fugitiveHash', { fg = '#DBB7FF' })
+
+-- GrugFar
+
+vim.api.nvim_set_hl(0, 'GrugFarInputLabel', { fg = '#FF9492' })
+
 -- blink.cmp
 
 vim.api.nvim_set_hl(0, 'BlinkCmpScrollBarThumb', { bg = '#F0F3F6' })

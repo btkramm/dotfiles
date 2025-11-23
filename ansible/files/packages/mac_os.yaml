@@ -1,4 +1,5 @@
 packages:
+  - claude-code
   - coreutils
 
   # Raycast / Night Light

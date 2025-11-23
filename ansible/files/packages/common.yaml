@@ -1,5 +1,4 @@
 packages:
-  - abduco
   - ast-grep
   - bat
   - btop

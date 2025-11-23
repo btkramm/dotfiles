@@ -67,6 +67,26 @@ return {
           cmd_add = { 'git', 'checkout', '-b' },
           cmd_del = { 'git', 'branch', '--delete', '--force' },
         },
+
+        commits = {
+          actions = {
+            ['enter'] = function(selected)
+              local commit = selected[1]:match('[^ ]+')
+
+              vim.fn.setreg('+', commit)
+            end,
+          },
+        },
+
+        bcommits = {
+          actions = {
+            ['enter'] = function(selected)
+              local commit = selected[1]:match('[^ ]+')
+
+              vim.fn.setreg('+', commit)
+            end,
+          },
+        },
       },
 
       grep = {
@@ -93,6 +113,14 @@ return {
   end,
 
   keys = {
+    {
+      '<D-r>',
+      function()
+        require('fzf-lua').resume()
+      end,
+      desc = 'fzf - Resume',
+    },
+
     -- Search
 
     {
@@ -128,21 +156,25 @@ return {
     {
       '<D-S-g>',
       function()
-        require('fzf-lua').grep_cword({
+        require('fzf-lua').live_grep({
+          search = vim.fn.expand('<cword>'),
           winopts = { title = ' Grep ' },
         })
       end,
-      desc = 'fzf - Grep - Word under cursor',
+      desc = 'fzf - Live Grep - Word under cursor',
     },
     {
       '<D-S-g>',
       function()
-        require('fzf-lua').grep_visual({
+        local utils = require('fzf-lua.utils')
+
+        require('fzf-lua').live_grep({
+          search = utils.get_visual_selection(),
           winopts = { title = ' Grep ' },
         })
       end,
       mode = 'v',
-      desc = 'fzf - Grep - Visual selection',
+      desc = 'fzf - Live Grep - Visual selection',
     },
 
     -- Git

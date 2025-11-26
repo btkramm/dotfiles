@@ -16,4 +16,6 @@ config/zsh/modules/secrets.sh
 
 # Claude Code
 
-config/claude
+config/claude/*
+
+!config/claude/agents/

@@ -48,7 +48,7 @@
 [core]
 	commitGraph = true
 	compression = 0
-	fsmonitor = true
+	fsmonitor = false
 	untrackedcache = true
 
 [gc]

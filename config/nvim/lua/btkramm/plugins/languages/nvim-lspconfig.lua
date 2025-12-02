@@ -85,6 +85,20 @@ return {
       },
     })
 
+    -- YAML
+
+    vim.lsp.enable('yamlls')
+
+    vim.lsp.config('yamlls', {
+      settings = {
+        yaml = {
+          schemas = {
+            ['https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json'] = 'docker-compose*.{yml,yaml}',
+          },
+        },
+      },
+    })
+
     -- Zig
 
     vim.lsp.enable('zls')

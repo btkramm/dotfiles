@@ -7,6 +7,7 @@ packages:
   - dust
   - eza
   - fd
+  - ffmpeg
   - fnm
   - fzf
   - gh

@@ -10,7 +10,7 @@ alias sg="ast-grep"
 
 alias ssh="kitten ssh"
 
-alias sync="brew update && brew upgrade && brew cleanup && ya pack -u"
+alias sync="brew update && brew upgrade && brew cleanup && ya pkg upgrade"
 
 alias vi="nvim"
 alias vim="nvim"

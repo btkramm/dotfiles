@@ -72,4 +72,6 @@ return {
       desc = 'Oil - Open at CWD',
     },
   },
+
+  enabled = false,
 }

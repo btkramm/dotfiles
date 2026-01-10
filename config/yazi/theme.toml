@@ -1,6 +1,9 @@
 [mgr]
 cwd = { fg = "magenta" } 
 
+[indicator]
+padding = { open = "▐", close = "▌" }
+
 [mode]
 normal_main = { fg = '#0a0c10', bg = 'blue' } 
 select_main = { fg = '#0a0c10', bg = 'yellow' }

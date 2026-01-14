@@ -97,3 +97,12 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH" # python@3.13
 export PATH="$PATH:/Users/btkramm/.local/bin" # pipx
+
+# PostgreSQL
+
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"
+
+export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@16/lib/pkgconfig"

@@ -1,6 +1,8 @@
 packages:
   - claude-code
   - coreutils
+  - docker
+  - docker-compose
 
   # Raycast / Night Light
 

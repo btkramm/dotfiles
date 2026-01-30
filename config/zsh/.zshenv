@@ -17,7 +17,3 @@ export MANPAGER='nvim +Man!'
 # Claude Code
 
 export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
-
-# Meilisearch
-
-export MEILI_CONFIG_FILE_PATH="$HOME/.config/meilisearch/meilisearch.toml"

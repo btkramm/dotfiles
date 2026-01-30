@@ -52,12 +52,6 @@
         dest: "{{ to_dir }}/kitty"
         state: link
 
-    - name: Create "meilisearch" symbolic links
-      ansible.builtin.file:
-        src: "{{ from_dir }}/meilisearch"
-        dest: "{{ to_dir }}/meilisearch"
-        state: link
-
     - name: Create "nvim" symbolic links
       ansible.builtin.file:
         src: "{{ from_dir }}/nvim"

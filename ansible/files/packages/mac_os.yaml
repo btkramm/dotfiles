@@ -3,7 +3,6 @@ packages:
   - coreutils
   - docker
   - docker-compose
-  - meilisearch
 
   # Raycast / Night Light
 

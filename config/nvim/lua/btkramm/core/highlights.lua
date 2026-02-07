@@ -19,9 +19,9 @@ vim.api.nvim_set_hl(0, 'BlinkCmpScrollBarThumb', { bg = '#F0F3F6' })
 
 -- @markup
 
-vim.api.nvim_set_hl(0, '@markup.heading.1.markdown', { bg = '#F0F3F6', fg = '#0A0C10', bold = true })
-vim.api.nvim_set_hl(0, '@markup.heading.2.markdown', { bg = '#F0F3F6', fg = '#0A0C10', bold = true })
-vim.api.nvim_set_hl(0, '@markup.heading.3.markdown', { bg = '#F0F3F6', fg = '#0A0C10', bold = true })
-vim.api.nvim_set_hl(0, '@markup.heading.4.markdown', { bg = '#F0F3F6', fg = '#0A0C10', bold = true })
-vim.api.nvim_set_hl(0, '@markup.heading.5.markdown', { bg = '#F0F3F6', fg = '#0A0C10', bold = true })
-vim.api.nvim_set_hl(0, '@markup.heading.6.markdown', { bg = '#F0F3F6', fg = '#0A0C10', bold = true })
+vim.api.nvim_set_hl(0, '@markup.heading.1.markdown', { fg = '#F0F3F6', bold = true })
+vim.api.nvim_set_hl(0, '@markup.heading.2.markdown', { fg = '#F0F3F6', bold = true })
+vim.api.nvim_set_hl(0, '@markup.heading.3.markdown', { fg = '#F0F3F6', bold = true })
+vim.api.nvim_set_hl(0, '@markup.heading.4.markdown', { fg = '#F0F3F6', bold = true })
+vim.api.nvim_set_hl(0, '@markup.heading.5.markdown', { fg = '#F0F3F6', bold = true })
+vim.api.nvim_set_hl(0, '@markup.heading.6.markdown', { fg = '#F0F3F6', bold = true })

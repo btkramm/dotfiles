@@ -6,6 +6,10 @@ return {
   cmd = { 'MarkdownPreview', 'MarkdownPreviewStop', 'MarkdownPreviewToggle' },
   ft = { 'markdown' },
 
+  init = function()
+    vim.g.mkdp_theme = 'light'
+  end,
+
   keys = {
     { '<leader>c', ':MarkdownPreviewToggle<CR>', ft = 'markdown', desc = 'Markdown Preview - Close' },
     { '<leader>o', ':MarkdownPreviewToggle<CR>', ft = 'markdown', desc = 'Markdown Preview - Open' },

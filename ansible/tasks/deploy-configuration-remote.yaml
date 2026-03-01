@@ -1,0 +1,59 @@
+---
+- name: Deploy configuration files to remote host
+  vars:
+    configuration_dir_from: "{{ playbook_dir }}/../../config"
+    configuration_dir_to: "{{ ansible_facts.env.HOME }}/dotfiles-config"
+    configuration_symlinks_dir_to: "{{ ansible_facts.env.HOME }}/.config"
+    universal_configurations:
+      - direnv
+      - eza
+      - git
+      - nvim
+      - yazi
+      - zsh
+    desktop_configurations:
+      - kitty
+  block:
+    - name: Synchronize configuration directory to remote host
+      ansible.posix.synchronize:
+        src: "{{ configuration_dir_from }}/"
+        dest: "{{ configuration_dir_to }}/"
+        delete: true
+        recursive: true
+
+    - name: Ensure ".config" directory exists
+      ansible.builtin.file:
+        path: "{{ configuration_symlinks_dir_to }}"
+        state: directory
+        mode: "0755"
+
+    - name: Create symlinks for universal configurations
+      ansible.builtin.file:
+        src: "{{ configuration_dir_to }}/{{ item }}"
+        dest: "{{ configuration_symlinks_dir_to }}/{{ item }}"
+        state: link
+        force: true
+      loop: "{{ universal_configurations }}"
+
+    - name: Create symlinks for desktop configurations
+      ansible.builtin.file:
+        src: "{{ configuration_dir_to }}/{{ item }}"
+        dest: "{{ configuration_symlinks_dir_to }}/{{ item }}"
+        state: link
+        force: true
+      loop: "{{ desktop_configurations }}"
+      when: "'desktop' in group_names"
+
+    - name: Create ".zshenv" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_dir_to }}/zsh/.zshenv"
+        dest: "{{ ansible_facts.env.HOME }}/.zshenv"
+        state: link
+        force: true
+
+    - name: Create ".hushlogin" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_dir_to }}/.hushlogin"
+        dest: "{{ ansible_facts.env.HOME }}/.hushlogin"
+        state: link
+        force: true

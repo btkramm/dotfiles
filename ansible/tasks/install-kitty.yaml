@@ -8,6 +8,8 @@
 - name: Install Kitty terminal emulator
   ansible.builtin.shell: |
     set -o pipefail && curl -fsSL https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+  args:
+    executable: /bin/bash
   when: already_installed.rc != 0
   changed_when: true
 

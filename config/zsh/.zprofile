@@ -1,3 +1,3 @@
 # pipx
 
-export PATH="$PATH:/Users/btkramm/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"

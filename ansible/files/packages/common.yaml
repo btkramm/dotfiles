@@ -19,7 +19,7 @@ packages:
   - nmap
   - restic
   - ripgrep
-  - tldr
+  - tlrc
   - unzip
   - wget
   - yazi

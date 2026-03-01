@@ -1,0 +1,8 @@
+[local]
+localhost	ansible_connection=local
+
+[cpu-server]
+maltese		ansible_host=maltese ansible_user=user ansible_connection=ssh
+
+[gpu-server]
+victorian	ansible_host=victorian ansible_user=user ansible_connection=ssh

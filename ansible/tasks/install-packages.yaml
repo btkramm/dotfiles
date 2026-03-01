@@ -3,3 +3,5 @@
   community.general.homebrew:
     name: "{{ (lookup('file', playbook_dir + '/' + packages_file) | from_yaml).packages }}"
     state: present
+  environment:
+    PATH: "{{ ansible_facts['env']['HOME'] + '/.linuxbrew/bin:' + ansible_facts['env']['PATH'] }}"

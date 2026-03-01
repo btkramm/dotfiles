@@ -12,4 +12,5 @@ defaults write -g InitialKeyRepeat -int 20
 
 # Ansible
 
-`ansible-playbook ./ansible/playbooks/initialize-development-environment.yaml`
+`ansible-playbook ./playbooks/initialize-development-environment.yaml --limit local`
+`ansible-playbook ./playbooks/initialize-development-environment.yaml --limit maltese`

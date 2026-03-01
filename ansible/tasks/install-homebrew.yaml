@@ -7,7 +7,12 @@
 
 - name: Install Homebrew package manager
   ansible.builtin.shell: |
-    set -o pipefail && curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | sh /dev/stdin
+    set -o pipefail && curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash /dev/stdin
+  args:
+    executable: /bin/bash
+  environment:
+    NONINTERACTIVE: "1"
+    HOMEBREW_PREFIX: "{{ (ansible_facts['env']['HOME'] + '/.linuxbrew') if ansible_facts['system'] == 'Linux' else '' }}"
   when: already_installed.rc != 0
   changed_when: true
 

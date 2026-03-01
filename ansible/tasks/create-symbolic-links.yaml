@@ -2,18 +2,18 @@
 - name: Create symbolic links
   vars:
     from_dir: "{{ playbook_dir }}/../../config"
-    to_dir: "{{ ansible_env.HOME }}/.config"
+    to_dir: "{{ ansible_facts['env']['HOME'] }}/.config"
   block:
     - name: Create ".hushlogin" symbolic links
       ansible.builtin.file:
         src: "{{ from_dir }}/.hushlogin"
-        dest: "{{ ansible_env.HOME }}/.hushlogin"
+        dest: "{{ ansible_facts['env']['HOME'] }}/.hushlogin"
         state: link
 
     - name: Create ".zshenv" symbolic links
       ansible.builtin.file:
         src: "{{ from_dir }}/zsh/.zshenv"
-        dest: "{{ ansible_env.HOME }}/.zshenv"
+        dest: "{{ ansible_facts['env']['HOME'] }}/.zshenv"
         state: link
 
     - name: Create "claude" symbolic links
@@ -45,6 +45,7 @@
         src: "{{ from_dir }}/karabiner"
         dest: "{{ to_dir }}/karabiner"
         state: link
+      when: ansible_facts['system'] == "Darwin"
 
     - name: Create "kitty" symbolic links
       ansible.builtin.file:
@@ -63,12 +64,14 @@
         src: "{{ from_dir }}/skhd"
         dest: "{{ to_dir }}/skhd"
         state: link
+      when: ansible_facts['system'] == "Darwin"
 
     - name: Create "yabai" symbolic links
       ansible.builtin.file:
         src: "{{ from_dir }}/yabai"
         dest: "{{ to_dir }}/yabai"
         state: link
+      when: ansible_facts['system'] == "Darwin"
 
     - name: Create "yazi" symbolic links
       ansible.builtin.file:

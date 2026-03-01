@@ -1,6 +1,6 @@
 ---
 - name: Initialize development environment
-  hosts: localhost
+  hosts: all
 
   tasks:
     - name: Install Homebrew package manager
@@ -8,6 +8,7 @@
 
     - name: Install Kitty terminal emulator
       ansible.builtin.import_tasks: ../tasks/install-kitty.yaml
+      when: ansible_facts['system'] == "Darwin"
 
     - name: Install common packages
       ansible.builtin.import_tasks: ../tasks/install-packages.yaml
@@ -18,6 +19,13 @@
       ansible.builtin.import_tasks: ../tasks/install-packages.yaml
       vars:
         packages_file: ../files/packages/mac_os.yaml
+      when: ansible_facts['system'] == "Darwin"
+
+    - name: Install Linux packages
+      ansible.builtin.import_tasks: ../tasks/install-packages.yaml
+      vars:
+        packages_file: ../files/packages/linux.yaml
+      when: ansible_facts['system'] == "Linux"
 
     - name: Create symbolic links
       ansible.builtin.import_tasks: ../tasks/create-symbolic-links.yaml

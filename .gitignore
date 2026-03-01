@@ -19,3 +19,5 @@ config/zsh/modules/secrets.sh
 config/claude/*
 
 !config/claude/agents/
+
+openspec

@@ -32,6 +32,7 @@ safe() {
     --add-dirs-ro="$add_dirs_ro" \
     --append-profile="$SAFEHOUSE_APPEND_PROFILE" \
     --env-pass="$SAFEHOUSE_ENV_PASS" \
+    --enable=xcode
     "$@"
 }
 

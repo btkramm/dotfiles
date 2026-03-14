@@ -11,9 +11,15 @@
     (home-subpath "/.local/share/fnm")
     (home-subpath "/.local/state/fnm_multishells")
 
+    ;; kitty ----------------------------------------------------------------
+
+    (home-subpath "/.config/kitty")
+    (home-subpath "/personal/dotfiles/config/kitty")
+
     ;; workmux ----------------------------------------------------------------
 
     (home-subpath "/.config/workmux")
+    (home-subpath "/personal/dotfiles/config/workmux/config.yaml")
 )
 
 (allow file-read* file-write*

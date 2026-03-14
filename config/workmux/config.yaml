@@ -12,7 +12,7 @@ status_icons:
 panes:
   - command: vi
     focus: true
-  - command: unsafe-ai
+  - command: ai
     split: vertical
 
 post_create:

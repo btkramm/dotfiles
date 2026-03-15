@@ -24,7 +24,7 @@ function open_in_nvim() {
       --copy-env \
       --type=tab \
       --tab-title="#$number" \
-      --cwd="$HOME/work/agf/${repository}/main" \
+      --cwd="$HOME/work/afp/${repository}/main" \
       nvim -c ":Octo pr edit $number"
   fi
 }

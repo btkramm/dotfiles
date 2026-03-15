@@ -12,17 +12,13 @@ prs_json_path=$(mktemp)
 
 tmp_dir=$(mktemp -d)
 
-design_system_prs_json_path="$(mktemp -p "$tmp_dir")"
-mobile_app_prs_json_path="$(mktemp -p "$tmp_dir")"
-web_app_prs_json_path="$(mktemp -p "$tmp_dir")"
+afp_prs_json_path="$(mktemp -p "$tmp_dir")"
 
-fetch_prs "is:open user-review-requested:@me" "fintual/design-system" > "$design_system_prs_json_path" &
-fetch_prs "is:open user-review-requested:@me" "fintual/mobile-app" > "$mobile_app_prs_json_path" &
-fetch_prs "is:open user-review-requested:@me" "fintual/web-app" > "$web_app_prs_json_path" &
+fetch_prs "is:open user-review-requested:@me" "afp-fintual/afp" > "$afp_prs_json_path" &
 
 wait
 
-jq -s 'add' "$design_system_prs_json_path" "$mobile_app_prs_json_path" "$web_app_prs_json_path" > "$prs_json_path"
+jq -s 'add' "$afp_prs_json_path" > "$prs_json_path"
 
 rm -rf "$tmp_dir"
 

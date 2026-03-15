@@ -7,7 +7,8 @@ return {
     lint.linters.luacheck.args = { '--globals', 'vim' }
 
     lint.linters_by_ft = {
-      lua = { 'luacheck' },
+      ['lua'] = { 'luacheck' },
+      ['yaml.ansible'] = { 'ansible_lint' },
     }
 
     local lint_group = vim.api.nvim_create_augroup('lint', { clear = true })

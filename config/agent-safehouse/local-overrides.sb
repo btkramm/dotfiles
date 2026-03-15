@@ -13,6 +13,8 @@
 
     ;; kitty ----------------------------------------------------------------
 
+    (subpath "/Applications/Kitty-Terminal.app")
+
     (home-subpath "/.config/kitty")
     (home-subpath "/personal/dotfiles/config/kitty")
 

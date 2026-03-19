@@ -31,9 +31,7 @@
 )
 
 (allow file-read* file-write*
-    ;; fnm --------------------------------------------------------------------
-
-    (home-subpath "/.local/state/fnm_multishells")
+    (home-subpath "/.local/state")
 
     ;; git --------------------------------------------------------------------
 
@@ -45,9 +43,4 @@
     (home-literal "/.config/yazi-path")
 
     (home-subpath "/.cache/nvim")
-    (home-subpath "/.local/state/nvim")
-
-    ;; workmux ----------------------------------------------------------------
-
-    (home-subpath "/.local/state/workmux")
 )

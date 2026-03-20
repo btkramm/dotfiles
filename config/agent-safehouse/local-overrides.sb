@@ -24,6 +24,13 @@
 
     (home-subpath "/.local/share/nvim")
 
+    ;; ssh --------------------------------------------------------------------
+
+    (home-literal "/.ssh/personal.pub")
+
+    (home-literal "/.ssh/work-afp.pub")
+    (home-literal "/.ssh/work-agf.pub")
+
     ;; workmux ----------------------------------------------------------------
 
     (home-subpath "/.config/workmux")

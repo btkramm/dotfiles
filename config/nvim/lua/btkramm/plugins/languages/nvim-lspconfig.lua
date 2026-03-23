@@ -16,6 +16,22 @@ return {
 
     vim.lsp.enable('bashls')
 
+    vim.lsp.config('bashls', {
+      handlers = {
+        ['textDocument/publishDiagnostics'] = function(err, result, ctx)
+          local filename = vim.fn.fnamemodify(vim.uri_to_fname(result.uri), ':t')
+
+          if filename:match('%.env') then
+            result.diagnostics = vim.tbl_filter(function(d)
+              return d.code ~= 'SC2034'
+            end, result.diagnostics)
+          end
+
+          vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx)
+        end,
+      },
+    })
+
     -- ESLint
 
     vim.lsp.enable('eslint')

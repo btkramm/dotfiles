@@ -12,6 +12,7 @@ packages:
 
   - colima
   - docker
+  - docker-buildx
   - docker-compose
 
   # AI

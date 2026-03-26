@@ -11,6 +11,7 @@ return {
   config = function()
     local pytest_python_adapter = require('neotest-python')({
       runner = 'pytest',
+      args = { '-s' },
       pytest_discover_instances = true,
     })
 

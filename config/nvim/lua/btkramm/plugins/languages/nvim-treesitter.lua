@@ -7,37 +7,15 @@ return {
       opts = { max_lines = 2 },
     },
   },
-  branch = 'master',
+  branch = 'main',
   build = ':TSUpdate',
   lazy = false,
 
-  config = function()
-    ---@diagnostic disable: missing-fields
-    require('nvim-treesitter.configs').setup({
-      highlight = { enable = true },
+  opts = {
+    ensure_installed = 'all',
 
-      indent = { enable = true },
+    highlight = { enable = true },
 
-      -- nvim-autopairs
-
-      autopairs = { enable = true },
-
-      -- nvim-ts-autotag
-
-      autotag = { enable = false },
-
-      incremental_selection = {
-        enable = true,
-
-        keymaps = {
-          init_selection = '<CR>',
-
-          node_incremental = '<CR>',
-          node_decremental = '<BS>',
-
-          scope_incremental = false,
-        },
-      },
-    })
-  end,
+    indent = { enable = true },
+  },
 }

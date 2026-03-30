@@ -30,6 +30,7 @@ packages:
 
   - luarocks
   - neovim
+  - tree-sitter-cli
 
   # Zsh
 

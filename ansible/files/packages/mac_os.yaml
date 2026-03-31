@@ -18,6 +18,7 @@ packages:
   # AI
 
   - claude-code
+  - codex
   - eugene1g/safehouse/agent-safehouse
   - raine/workmux/workmux
 

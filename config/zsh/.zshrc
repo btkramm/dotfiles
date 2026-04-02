@@ -113,3 +113,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
   export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@16/lib/pkgconfig"
 fi
+
+# OpenCode
+
+export PATH=/Users/btkramm/.opencode/bin:$PATH

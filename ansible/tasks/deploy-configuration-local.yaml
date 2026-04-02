@@ -64,6 +64,12 @@
         dest: "{{ configuration_symlinks_to_dir }}/nvim"
         state: link
 
+    - name: Create "opencode" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/opencode"
+        dest: "{{ configuration_symlinks_to_dir }}/opencode"
+        state: link
+
     - name: Create "skhd" symlink
       ansible.builtin.file:
         src: "{{ configuration_from_dir }}/skhd"

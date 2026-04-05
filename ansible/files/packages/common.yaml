@@ -13,7 +13,6 @@ packages:
   - gh
   - git-delta
   - git-lfs
-  - graphviz
   - jless
   - jq
   - nmap

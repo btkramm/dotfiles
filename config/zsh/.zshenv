@@ -14,6 +14,10 @@ export MANPAGER='nvim +Man!'
 
 [[ -f "$ZDOTDIR/modules/secrets.sh" ]] && source "$ZDOTDIR/modules/secrets.sh"
 
+# Tesseract OCR (lit)
+
+export TESSDATA_PREFIX="$HOME/.local/share/tessdata"
+
 # Claude Code
 
 export CLAUDE_CONFIG_DIR="$HOME/.config/claude"

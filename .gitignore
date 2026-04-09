@@ -14,9 +14,13 @@ config/zsh/.zsh_history
 config/zsh/.zsh_sessions
 config/zsh/modules/secrets.sh
 
+# Pi
+
+config/pi/agent/sessions/
+
 # Claude Code
 
-config/claude/*
+config/claude/
 
 !config/claude/CLAUDE.md
 !config/claude/agents/

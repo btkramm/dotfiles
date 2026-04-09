@@ -70,6 +70,12 @@
         dest: "{{ configuration_symlinks_to_dir }}/opencode"
         state: link
 
+    - name: Create "pi" symlink
+      ansible.builtin.file:
+        src: "{{ configuration_from_dir }}/pi"
+        dest: "{{ ansible_facts.env.HOME }}/.pi"
+        state: link
+
     - name: Create "skhd" symlink
       ansible.builtin.file:
         src: "{{ configuration_from_dir }}/skhd"

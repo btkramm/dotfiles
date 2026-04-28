@@ -21,4 +21,4 @@ sep_right = { open = "", close = "" }
 border = { fg = 'white' }
 
 [filetype]
-rules = [{ name = "*/", fg = "white" }]
+rules = [{ url = "*/", fg = "white" }]

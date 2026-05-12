@@ -82,12 +82,6 @@
         dest: "{{ configuration_symlinks_to_dir }}/skhd"
         state: link
 
-    - name: Create "workmux" symlink
-      ansible.builtin.file:
-        src: "{{ configuration_from_dir }}/workmux"
-        dest: "{{ configuration_symlinks_to_dir }}/workmux"
-        state: link
-
     - name: Create "yabai" symlink
       ansible.builtin.file:
         src: "{{ configuration_from_dir }}/yabai"

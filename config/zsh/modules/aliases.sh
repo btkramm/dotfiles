@@ -1,6 +1,5 @@
 alias ai="safe-claude"
 alias unsafe-ai="unsafe-claude"
-alias wm='workmux'
 
 alias cd="z"
 

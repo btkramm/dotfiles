@@ -30,11 +30,6 @@
 
     (home-literal "/.ssh/work-afp.pub")
     (home-literal "/.ssh/work-agf.pub")
-
-    ;; workmux ----------------------------------------------------------------
-
-    (home-subpath "/.config/workmux")
-    (home-subpath "/personal/dotfiles/config/workmux")
 )
 
 (allow file-read* file-write*

@@ -1,6 +1,7 @@
 ---
 name: open-pr
-description: Create a GitHub pull request with structured Spanish-language description
+description: >-
+  Create a GitHub pull request with structured English-language description
 ---
 
 Create a GitHub pull request following these conventions.
@@ -19,8 +20,8 @@ Examples of invocation:
 
 ## Steps
 
-1. Run `git log main..HEAD` and `git diff main...HEAD` to understand all commits
-   since the branch diverged from `main`.
+1. Run `git log main..HEAD` and `git diff main...HEAD` to understand all
+   commits since the branch diverged from `main`.
 2. Analyze **all** commits in the branch, not just the latest one.
 3. Draft the PR title and body following the rules below.
 4. Push to remote with `-u` if needed.
@@ -30,7 +31,7 @@ Examples of invocation:
 ## Title rules
 
 - Keep under 80 characters.
-- Write in Spanish.
+- Write in English.
 - Use a plain, descriptive summary of the objective. Do NOT use conventional
   commit prefixes (`feat:`, `fix:`, `refactor:`, etc.) — this is a PR title,
   not a commit message.
@@ -67,13 +68,16 @@ The body **must** use these four sections, in this order:
 ## Formatting
 
 - **No column wrapping** in the PR body. Write each paragraph or sentence as a
-  single long line. Do NOT wrap text at 80 characters or any other column width.
-  GitHub renders markdown with its own line wrapping — manual line breaks inside
-  paragraphs create ugly diffs and reflow issues.
+  single long line. Do NOT wrap text at 80 characters or any other column
+  width. GitHub renders markdown with its own line wrapping — manual line
+  breaks inside paragraphs create ugly diffs and reflow issues.
 
 ## Language
 
-- Write the **entire PR** (title, body, section content) in **Spanish**.
+- Write the **entire PR** (title, body, section content) in **English**, even
+  if the invocation argument or the surrounding conversation is in Spanish.
+- Keep Chilean AFP domain abbreviations as-is (OTI, APV, SIS, RUT, CCICO, ...)
+  per the project's language conventions.
 - Use backticks for all code references (class names, function names, file
   paths, variables, commands).
 
@@ -82,7 +86,7 @@ The body **must** use these four sections, in this order:
 Use a HEREDOC to pass the body:
 
 ```bash
-gh pr create --title "Título" --body "$(cat <<'EOF'
+gh pr create --title "Title" --body "$(cat <<'EOF'
 ### Context
 
 (...)
@@ -106,22 +110,22 @@ EOF
 
 ### Context
 
-Necesitamos una forma estandarizada de interactuar con S3 (MinIO en local/CI) desde el backend, y un patrón claro para escribir tests de integración que usan archivos almacenados en S3. Hasta ahora no teníamos ni un cliente S3 configurado ni documentación sobre cómo testear contra el storage.
+We need a standardized way to interact with S3 (MinIO in local/CI) from the backend, and a clear pattern for writing integration tests that use files stored in S3. Until now we had neither an S3 client configured nor documentation on how to test against the storage.
 
 ### Objective
 
-Proponer un patrón para crear tests de integración que operan contra S3 (MinIO). Se incluye un cliente S3 reutilizable, un test de ejemplo en la app `treasury`, y documentación de referencia.
+Propose a pattern for writing integration tests that operate against S3 (MinIO). Includes a reusable S3 client, an example test in the `treasury` application, and reference documentation.
 
 ### Changelog
 
-- `refactor: rename MinioSettings to S3Settings` — Se renombran las variables de entorno de `MINIO_*` a `S3_*` con campos alineados a los parámetros de `boto3` (`aws_access_key_id`, `aws_secret_access_key`, `endpoint_url`). Se actualiza `compose.yml` y `.env` acorde.
-- `feat: install boto3 and boto3-stubs[s3]` — Se agrega `boto3` como dependencia de producción y `boto3-stubs[s3]` como dependencia de CI para tener tipos estrictos del cliente S3.
-- `feat: create treasury application scaffold` — Se crea la app `treasury` y se registra en `INSTALLED_APPS`. Por ahora solo contiene un test de ejemplo, pero eventualmente albergará lógica propia.
-- `feat: create S3 client factory, integration test, and documentation` — Se crea `common/s3.py` con `create_s3_client()` que retorna un `S3Client` tipado. Se agrega un test de integración en `apps/treasury/s3_integration_test.py` que demuestra el patrón: fixture que crea un bucket, ejecuta el test, y limpia. Se documenta el patrón en `docs/references/back/s3-integration-testing.md`.
+- `refactor: rename MinioSettings to S3Settings` — Renames the environment variables from `MINIO_*` to `S3_*` with fields aligned to the `boto3` parameters (`aws_access_key_id`, `aws_secret_access_key`, `endpoint_url`). Updates `compose.yml` and `.env` accordingly.
+- `feat: install boto3 and boto3-stubs[s3]` — Adds `boto3` as a production dependency and `boto3-stubs[s3]` as a CI dependency for strict typing of the S3 client.
+- `feat: create treasury application scaffold` — Creates the `treasury` application and registers it in `INSTALLED_APPS`. For now it only contains an example test, but it will eventually hold its own logic.
+- `feat: create S3 client factory, integration test, and documentation` — Creates `common/s3.py` with `create_s3_client()` returning a typed `S3Client`. Adds an integration test in `apps/treasury/s3_integration_test.py` demonstrating the pattern: a fixture that creates a bucket, runs the test, and cleans up. Documents the pattern in `docs/references/back/s3-integration-testing.md`.
 
 ### QA
 
-El test de integración se puede ejecutar con MinIO corriendo:
+The integration test can be run with MinIO up:
 
 ```bash
 docker compose up minio -d

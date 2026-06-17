@@ -57,7 +57,14 @@ return {
 
       git = {
         branches = {
-          cmd = 'git br --color --format="%(if)%(HEAD)%(then)* %(color:green)%(else)  %(if)%(worktreepath)%(then)%(color:cyan)%(else)%(color:white)%(end)%(end)%(refname:short)%(color:reset)"',
+          cmd = 'git br --color=always --format="%(if)%(HEAD)%(then)* %(color:green)%(else)  %(if)%(worktreepath)%(then)%(color:cyan)%(else)%(color:white)%(end)%(end)%(refname:short)%(color:reset)"',
+
+          -- `fzf-lua` colors branches with a `fn_transform` (Lua function),
+          -- which forces wrapping the command in an `nvim` instance
+          -- (`spawn.lua`) and adds ~850ms of load time. Our `--format` already
+          -- colors via `--color=always`, so we disable it to let `fzf` run the
+          -- command directly (~55ms).
+          fn_transform = false,
 
           actions = {
             ['ctrl-x'] = false,

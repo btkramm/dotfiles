@@ -117,3 +117,7 @@ fi
 # OpenCode
 
 export PATH=/Users/btkramm/.opencode/bin:$PATH
+
+# mise
+
+eval "$(mise activate zsh)"

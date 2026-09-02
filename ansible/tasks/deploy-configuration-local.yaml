@@ -28,12 +28,6 @@
         dest: "{{ configuration_symlinks_to_dir }}/claude"
         state: link
 
-    - name: Create "direnv" symlink
-      ansible.builtin.file:
-        src: "{{ configuration_from_dir }}/direnv"
-        dest: "{{ configuration_symlinks_to_dir }}/direnv"
-        state: link
-
     - name: Create "eza" symlink
       ansible.builtin.file:
         src: "{{ configuration_from_dir }}/eza"

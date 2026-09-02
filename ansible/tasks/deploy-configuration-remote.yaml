@@ -5,7 +5,6 @@
     configuration_dir_to: "{{ ansible_facts.env.HOME }}/dotfiles-config"
     configuration_symlinks_dir_to: "{{ ansible_facts.env.HOME }}/.config"
     universal_configurations:
-      - direnv
       - eza
       - git
       - nvim

@@ -78,7 +78,6 @@ function zvm_after_init() {
 source $ZDOTDIR/modules/agent-safehouse.sh
 source $ZDOTDIR/modules/aliases.sh
 source $ZDOTDIR/modules/android.sh
-source $ZDOTDIR/modules/direnv.sh
 source $ZDOTDIR/modules/fintual.sh
 source $ZDOTDIR/modules/flutter.sh
 source $ZDOTDIR/modules/fnm.sh

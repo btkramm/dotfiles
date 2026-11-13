@@ -6,6 +6,7 @@ return {
   config = function()
     local theme = require('github-theme')
 
+
     theme.setup({
       options = { transparent = true },
     })

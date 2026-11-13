@@ -22,6 +22,7 @@ return {
           ['<C-d>'] = 'preview-page-down',
           ['<C-u>'] = 'preview-page-up',
         },
+
         fzf = {
           true,
 
@@ -109,6 +110,7 @@ return {
         keymap = {
           builtin = { ['<C-d>'] = false },
         },
+
         actions = {
           ['ctrl-x'] = false,
           ['ctrl-d'] = { fzf.actions.buf_del, fzf.actions.resume },

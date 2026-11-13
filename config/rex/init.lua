@@ -4,7 +4,9 @@ local HOME = os.getenv("HOME")
 
 local function current_cwd(block_id)
   local p = rex.block.call(TERMINAL, "process", { block_id = block_id })
+
   if p and p.foreground and p.foreground.cwd then return p.foreground.cwd end
+
   return nil
 end
 
@@ -26,6 +28,7 @@ rex.action{
   title = "Close Pane or Tab",
   run   = function(ctx, args)
     local _, err = rex.call("block.close", { session_id = ctx.session_id, block_id = ctx.block_id })
+
     if err ~= nil then error(err, 0) end
   end,
 }
@@ -39,6 +42,7 @@ rex.action{
   title = "Restore Split Layout",
   run   = function(ctx, args)
     local _, err = rex.session.zoom_block{ block_id = ctx.block_id, zoom = false }
+
     if err ~= nil then error(err, 0) end
   end,
 }
@@ -70,6 +74,7 @@ rex.action{
         options = { command = args.command, cwd = current_cwd(ctx.block_id) },
       },
     }
+
     if err ~= nil then error(err, 0) end
   end,
 }
@@ -83,6 +88,7 @@ rex.action{
       window_label = args.label,
       layout = rex.layout.block{ flavor = SHELL, options = { cwd = HOME .. "/" .. args.path } },
     }
+
     if err ~= nil then error(err, 0) end
   end,
 }
@@ -158,6 +164,7 @@ rm -f "$f"
         options = { command = { "sh", "-c", script, "sh", ctx.session_id, ctx.block_id } },
       },
     }
+
     if err ~= nil then error(err, 0) end
   end,
 }

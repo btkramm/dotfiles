@@ -7,6 +7,7 @@ local fugitive_extension = {
         return '' .. ' ' .. vim.fn.FugitiveHead()
       end,
     },
+
     lualine_z = { 'location' },
   },
 

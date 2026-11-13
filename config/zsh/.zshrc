@@ -86,7 +86,7 @@ source $ZDOTDIR/modules/utils.sh
 source $ZDOTDIR/modules/yazi.sh
 source $ZDOTDIR/modules/zoxide.sh
 
-# zsh-autosuggestions -----------------------------------------------------
+# zsh-autosuggestions ---------------------------------------------------------
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -94,17 +94,19 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# pipx
+# pipx ------------------------------------------------------------------------
 
 export PATH="$PATH:$HOME/.local/bin"
 
+# Python ----------------------------------------------------------------------
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  # Python
+  export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
+fi
 
-  export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH" # python@3.13
+# PostgreSQL ------------------------------------------------------------------
 
-  # PostgreSQL
-
+if [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
   export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
@@ -113,10 +115,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@16/lib/pkgconfig"
 fi
 
-# OpenCode
+# OpenCode --------------------------------------------------------------------
 
 export PATH=/Users/btkramm/.opencode/bin:$PATH
 
-# mise
+# mise ------------------------------------------------------------------------
 
 eval "$(mise activate zsh)"

@@ -109,7 +109,6 @@ rex.bind("ctrl+shift+0", "project_tab", { label = "dotfiles", path = "personal/d
 -- Sessions -------------------------------------------------------------------
 
 rex.bind("ctrl+shift+/", "session.switch")
-rex.bind("cmd+p", "session.switch")
 
 rex.bind("f7>q", "session.close")
 
@@ -121,17 +120,22 @@ rex.bind("cmd+k", "pane.send_key", { key = "ctrl+l" })
 
 -- Miscellaneous - NOP --------------------------------------------------------
 
-rex.bind("cmd+enter", "pane.send_key", { key = "cmd+enter" })
-rex.bind("cmd+n", "pane.send_key", { key = "cmd+n" })
-rex.bind("cmd+t", "pane.send_key", { key = "cmd+t" })
+-- Unbound keys reach the terminal with their native encoding; pane.send_key
+-- does not deliver cmd+* to Neovim as <D-*>.
 
-rex.bind("cmd+w", "pane.send_key", { key = "cmd+w" })
-rex.bind("shift+cmd+d", "pane.send_key", { key = "shift+cmd+d" })
+rex.unbind("cmd+enter")
+rex.unbind("cmd+n")
+rex.unbind("cmd+t")
 
-rex.bind("cmd+r", "pane.send_key", { key = "cmd+r" })
+rex.unbind("cmd+w")
 
-rex.bind("ctrl+shift+tab", "pane.send_key", { key = "ctrl+shift+tab" })
-rex.bind("ctrl+tab", "pane.send_key", { key = "ctrl+tab" })
+rex.unbind("cmd+f")
+rex.unbind("cmd+g")
+rex.unbind("cmd+p")
+rex.unbind("cmd+r")
+
+rex.unbind("ctrl+shift+tab")
+rex.unbind("ctrl+tab")
 
 -- Scrollback -----------------------------------------------------------------
 

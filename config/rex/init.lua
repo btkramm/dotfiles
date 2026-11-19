@@ -35,6 +35,81 @@ rex.action{
 
 rex.bind("ctrl+shift+w", "close_pane_or_tab")
 
+-- Panes - Resize -------------------------------------------------------------
+
+local function first_block(node)
+  while node.split do node = node.split.before end
+
+  return node.block_id
+end
+
+local function find_split(node, block_id, axis)
+  if node.block_id then return node.block_id == block_id, nil end
+
+  local split = node.split
+
+  for _, side in ipairs({ "before", "after" }) do
+    local found, match = find_split(split[side], block_id, axis)
+
+    if found then
+      if match == nil and split.direction == axis then match = { split = split, side = side } end
+
+      return true, match
+    end
+  end
+
+  return false, nil
+end
+
+rex.action{
+  name  = "resize_focused",
+  title = "Resize Focused Pane",
+  args  = { axis = "string", amount = "number" },
+  run   = function(ctx, args)
+    local view, err = rex.session.view{ session_id = ctx.session_id }
+
+    if err ~= nil then error(err, 0) end
+
+    for _, window in ipairs(view.windows or {}) do
+      for _, layer in ipairs(window.layers or {}) do
+        if layer.kind == "tiled" and layer.layout then
+          local found, match = find_split(layer.layout, ctx.block_id, args.axis)
+
+          if found then
+            if match == nil then return end
+
+            local split = match.split
+            local before, after, ratio
+
+            if match.side == "before" then
+              before, after, ratio = ctx.block_id, first_block(split.after), split.ratio + args.amount
+            else
+              before, after, ratio = first_block(split.before), ctx.block_id, split.ratio - args.amount
+            end
+
+            local _, resize_err = rex.session.resize_pane{
+              session_id      = ctx.session_id,
+              direction       = args.axis,
+              before_block_id = before,
+              after_block_id  = after,
+              ratio           = math.min(math.max(ratio, 0.05), 0.95),
+            }
+
+            if resize_err ~= nil then error(resize_err, 0) end
+
+            return
+          end
+        end
+      end
+    end
+  end,
+}
+
+rex.bind("ctrl+shift+alt+n", "resize_focused", { axis = "horizontal", amount = -0.05 })
+rex.bind("ctrl+shift+alt+s", "resize_focused", { axis = "vertical", amount = -0.05 })
+rex.bind("ctrl+shift+alt+t", "resize_focused", { axis = "vertical", amount = 0.05 })
+rex.bind("ctrl+shift+alt+w", "resize_focused", { axis = "horizontal", amount = 0.05 })
+
 -- Panes - Layouts ------------------------------------------------------------
 
 rex.action{

@@ -78,3 +78,6 @@
 
 [includeIf "gitdir:~/work/afp/"]
 	path = ~/work/afp/.gitconfig
+
+[url "git@github.com-work-afp:afp-fintual/"]
+	insteadOf = git@github.com:afp-fintual/

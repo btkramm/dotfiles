@@ -1,0 +1,27 @@
+---
+# mermaid-cli renders through Puppeteer, which needs the exact
+# chrome-headless-shell build its bundled puppeteer-core pins. Installing it
+# with that same bundled puppeteer keeps both versions in step after a `brew
+# upgrade mermaid-cli`.
+
+- name: Install the chrome-headless-shell that mermaid-cli expects
+  ansible.builtin.shell: |
+    set -o pipefail
+    unset PUPPETEER_EXECUTABLE_PATH PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
+
+    cache="$HOME/.cache/puppeteer/chrome-headless-shell"
+
+    before=$(ls "$cache" 2>/dev/null)
+
+    "$(brew --prefix mermaid-cli)/libexec/lib/node_modules/@mermaid-js/mermaid-cli/node_modules/.bin/puppeteer" \
+      browsers install chrome-headless-shell
+
+    after=$(ls "$cache" 2>/dev/null)
+
+    if [ "$before" != "$after" ]; then echo CHANGED; fi
+  args:
+    executable: /bin/bash
+  environment:
+    PATH: "{{ '/home/linuxbrew/.linuxbrew/bin:' if 'linux' in group_names else '/opt/homebrew/bin:' }}{{ ansible_env.PATH }}"
+  register: _mermaid_browser
+  changed_when: "'CHANGED' in _mermaid_browser.stdout"

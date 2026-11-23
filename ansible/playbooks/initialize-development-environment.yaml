@@ -11,6 +11,9 @@
       vars:
         packages_file: ../files/packages/common.yaml
 
+    - name: Install the browser mermaid-cli renders with
+      ansible.builtin.import_tasks: ../tasks/install-mermaid-browser.yaml
+
 - name: Install macOS-specific packages and deploy local configuration
   hosts: mac_os
 

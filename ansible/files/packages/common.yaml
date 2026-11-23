@@ -35,3 +35,8 @@ packages:
   - zsh-autosuggestions
   - zsh-syntax-highlighting
   - zsh-vi-mode
+
+  # Mermaid
+
+  - chafa
+  - mermaid-cli

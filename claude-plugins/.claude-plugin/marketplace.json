@@ -1,0 +1,13 @@
+{
+  "name": "dotfiles",
+  "owner": {
+    "name": "Benjamín Kramm"
+  },
+  "plugins": [
+    {
+      "name": "rex-mermaid",
+      "description": "Open the Mermaid diagrams an agent writes in a Rex floating pane.",
+      "source": "./rex-mermaid"
+    }
+  ]
+}

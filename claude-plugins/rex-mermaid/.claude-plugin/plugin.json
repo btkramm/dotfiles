@@ -1,0 +1,6 @@
+{
+  "name": "rex-mermaid",
+  "version": "0.1.0",
+  "description": "Open the Mermaid diagrams an agent writes in a Rex floating pane.",
+  "types": "./types/index.d.ts"
+}

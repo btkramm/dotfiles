@@ -273,3 +273,7 @@ rm -f "$f"
 })
 
 rex.bind('ctrl+shift+p', 'scrollback_nvim')
+
+-- Mermaid --------------------------------------------------------------------
+
+require('mermaid')

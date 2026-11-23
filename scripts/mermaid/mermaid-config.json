@@ -1,0 +1,11 @@
+{
+  "theme": "redux-dark-color",
+  "look": "neo",
+  "gantt": {
+    "useWidth": 800,
+    "barHeight": 28,
+    "fontSize": 14,
+    "sectionFontSize": 14,
+    "axisFormat": "%b %d"
+  }
+}

@@ -41,7 +41,7 @@ return {
         vim.api.nvim_create_autocmd('BufWritePre', {
           buffer = bufnr,
           callback = function()
-            if client.supports_method('textDocument/codeAction') then
+            if client:supports_method('textDocument/codeAction') then
               vim.lsp.buf.code_action({
                 context = { only = { 'source.fixAll.eslint' }, diagnostics = {} },
                 apply = true,

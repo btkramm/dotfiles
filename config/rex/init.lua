@@ -191,7 +191,12 @@ rex.action({
 })
 
 local ai = { 'zsh', '-il', '-c', 'ai' }
-local yazi = { 'zsh', '-il', '-c', 'yazi $(head -n 1 "$HOME/.config/yazi-path" 2>/dev/null)' }
+local yazi = {
+  'zsh',
+  '-il',
+  '-c',
+  'target=$(head -n 1 "${XDG_CONFIG_HOME:-$HOME/.config}/yazi-path" 2>/dev/null); [ -e "$target" ] || target=$HOME; yazi "$target"',
+}
 local gh_fzf = HOME .. '/personal/dotfiles/scripts/gh-fzf/'
 
 rex.bind('ctrl+shift+a>v', 'split_run', { direction = 'horizontal', command = ai })

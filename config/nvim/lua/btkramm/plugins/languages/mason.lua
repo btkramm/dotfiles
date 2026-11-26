@@ -9,7 +9,19 @@ return {
 
     require('mason-lspconfig').setup({
       automatic_enable = false,
-      automatic_installation = true,
+
+      ensure_installed = {
+        'ansiblels',
+        'bashls',
+        'eslint',
+        'lua_ls',
+        'pyright',
+        'ruff',
+        'ts_ls',
+        'vue_ls',
+        'yamlls',
+        'zls',
+      },
     })
   end,
 }

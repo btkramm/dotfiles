@@ -1,7 +1,7 @@
 local SHELL = 'com.superlogical.terminal.shell'
 local VIEWER = os.getenv('HOME') .. '/personal/dotfiles/scripts/mermaid/mermaid-view.sh'
 
-local function window_of(session_id, block_id)
+local function window_id_of_block(session_id, block_id)
   if block_id == nil then
     return nil
   end
@@ -33,11 +33,12 @@ rex.action({
   args = { file = 'string' },
   run = function(ctx, args)
     local _, err = rex.session.new_layer({
-      window_id = window_of(ctx.session_id, ctx.block_id),
+      window_id = window_id_of_block(ctx.session_id, ctx.block_id),
       bounds = { 0.05, 0.05, 0.9, 0.9 },
       focus = true,
       layout = rex.layout.block({
         flavor = SHELL,
+        -- The path is an argument. It is never part of the `-c` text.
         options = { command = { 'zsh', '-il', '-c', '"$0" "$@"', VIEWER, args.file } },
       }),
     })

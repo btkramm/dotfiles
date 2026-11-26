@@ -1,12 +1,10 @@
 ---
-# mermaid-cli renders through Puppeteer, which needs the exact
-# chrome-headless-shell build its bundled puppeteer-core pins. Installing it
-# with that same bundled puppeteer keeps both versions in step after a `brew
-# upgrade mermaid-cli`.
+# `mmdc` needs the `chrome-headless-shell` build that its own Puppeteer pins.
+# This task installs the browser with that Puppeteer. Thus the two versions
+# stay the same after `brew upgrade mermaid-cli`.
 
 - name: Install the chrome-headless-shell that mermaid-cli expects
   ansible.builtin.shell: |
-    set -o pipefail
     unset PUPPETEER_EXECUTABLE_PATH PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
 
     cache="$HOME/.cache/puppeteer/chrome-headless-shell"

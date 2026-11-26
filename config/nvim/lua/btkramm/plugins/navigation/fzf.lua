@@ -218,6 +218,7 @@ return {
         })
       end,
       desc = 'fzf - LSP References',
+      nowait = true,
     },
     {
       'gi',

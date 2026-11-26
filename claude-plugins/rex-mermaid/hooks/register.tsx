@@ -7,14 +7,14 @@ const MAX_DIAGRAMS = 50
 const FENCE = /(```|~~~)mermaid[^\n]*\n([\s\S]*?)\n[ \t]*\1/g
 
 const diagrams = atom({ plugin: 'rex-mermaid', key: 'diagrams' } as const, [], { shape: 'diagrams-1' })
-const latest = atom({ plugin: 'rex-mermaid', key: 'latest' } as const, [], { shape: 'latest-1' })
-const isHidden = atom({ plugin: 'rex-mermaid', key: 'isHidden' } as const, false)
+const bandNumbers = atom({ plugin: 'rex-mermaid', key: 'bandNumbers' } as const, [], { shape: 'bandNumbers-1' })
+const isBandHidden = atom({ plugin: 'rex-mermaid', key: 'isBandHidden' } as const, false)
 
-export function fenced(text: string): string[] {
+export function mermaidBlocks(text: string): string[] {
   return [...text.matchAll(FENCE)].map(match => (match[2] ?? '').trim()).filter(source => source !== '')
 }
 
-export function kindOf(source: string): string {
+export function diagramKind(source: string): string {
   const lines = source.split('\n').map(line => line.trim())
   let isFrontmatter = lines[0] === '---'
 
@@ -31,46 +31,55 @@ export function kindOf(source: string): string {
   return 'diagram'
 }
 
-async function remember($: EngineInterface, sources: readonly string[]): Promise<void> {
-  if (sources.length === 0) return
-
-  const list = [...(await read($, diagrams))]
-  const numbers: number[] = []
-
-  for (const source of sources) {
-    const known = list.find(diagram => diagram.source === source)
-
-    if (known !== undefined) {
-      numbers.push(known.number)
-
-      continue
-    }
-
-    const number = (list[list.length - 1]?.number ?? 0) + 1
-
-    list.push({ number, kind: kindOf(source), source })
-    numbers.push(number)
-  }
-
-  await update($, diagrams, () => list.slice(-MAX_DIAGRAMS))
-  await update($, latest, current => [...new Set([...current, ...numbers])])
-  await update($, isHidden, () => false)
+function succeeded(result: { deny?: unknown; isError?: boolean }): boolean {
+  return result.deny === undefined && result.isError !== true
 }
 
-async function open($: EngineInterface, diagram: Diagram): Promise<string | undefined> {
+async function addDiagrams($: EngineInterface, sources: readonly string[]): Promise<void> {
+  if (sources.length === 0) return
+
+  let addedNumbers: number[] = []
+
+  // `update` can run this function again when the list changes. Thus it must
+  // compute everything from `current`.
+  await update($, diagrams, current => {
+    const list = [...current]
+
+    addedNumbers = sources.map(source => {
+      const known = list.find(diagram => diagram.source === source)
+
+      if (known !== undefined) return known.number
+
+      const number = (list.at(-1)?.number ?? 0) + 1
+
+      list.push({ number, kind: diagramKind(source), source })
+
+      return number
+    })
+
+    return list.slice(-MAX_DIAGRAMS)
+  })
+
+  await update($, bandNumbers, current => [...new Set([...current, ...addedNumbers])])
+  await update($, isBandHidden, () => false)
+}
+
+async function openInRex($: EngineInterface, diagram: Diagram): Promise<string | undefined> {
   const session = await $.env.get('REX_SESSION')
   const block = await $.env.get('REX_BLOCK')
 
   if (session === undefined || block === undefined) return 'Claude Code is not running inside Rex.'
 
-  const { CLAUDE_PLUGIN_DATA } = await $.process.hookEnv()
-  const file = `${CLAUDE_PLUGIN_DATA}/diagram-${diagram.number}.mmd`
+  // All sessions share `CLAUDE_PLUGIN_DATA`, and each session numbers its
+  // diagrams from 1. The session ID keeps the file names apart.
+  const { CLAUDE_PLUGIN_DATA, CLAUDE_CODE_SESSION_ID } = await $.process.hookEnv()
+  const file = `${CLAUDE_PLUGIN_DATA}/diagram-${CLAUDE_CODE_SESSION_ID}-${diagram.number}.mmd`
 
   await $.fs.write(file, `${diagram.source}\n`)
 
-  const ran = await $.process.run(['rex', 'do', '-s', session, '-b', block, 'mermaid_preview', `file=${file}`])
+  const result = await $.process.run(['rex', 'do', '-s', session, '-b', block, 'mermaid_preview', `file=${file}`])
 
-  if (ran.exitCode !== 0) return `rex could not open diagram #${diagram.number}: ${ran.stderr.trim()}`
+  if (result.exitCode !== 0) return `rex could not open diagram #${diagram.number}: ${result.stderr.trim()}`
 
   return undefined
 }
@@ -89,30 +98,30 @@ export const register: Register = on => {
     const step = yield* next(e)
 
     if (e.agentId === undefined) {
-      if (e.index === 0) await update($, latest, () => [])
+      if (e.index === 0) await update($, bandNumbers, () => [])
 
-      await remember($, fenced(step.answer))
+      await addDiagrams($, mermaidBlocks(step.answer))
     }
 
     return step
   })
 
   on('tool.call', { tool: 'Write' }, async ($, e, next) => {
-    const ran = await next(e)
+    const result = await next(e)
 
-    if (ran.deny === undefined && ran.isError !== true) {
-      await remember($, e.file_path.endsWith('.mmd') ? [e.content.trim()] : fenced(e.content))
+    if (succeeded(result)) {
+      await addDiagrams($, e.file_path.endsWith('.mmd') ? [e.content.trim()] : mermaidBlocks(e.content))
     }
 
-    return ran
+    return result
   })
 
   on('tool.call', { tool: 'Edit' }, async ($, e, next) => {
-    const ran = await next(e)
+    const result = await next(e)
 
-    if (ran.deny === undefined && ran.isError !== true) await remember($, fenced(e.new_string))
+    if (succeeded(result)) await addDiagrams($, mermaidBlocks(e.new_string))
 
-    return ran
+    return result
   })
 
   on('command.run', { command: 'mermaid' }, async ($, e) => {
@@ -125,21 +134,22 @@ export const register: Register = on => {
       return { text: list.map(diagram => `#${diagram.number} ${diagram.kind}`).join('\n'), isTextDisplayOnly: true }
     }
 
-    const diagram = arg === '' ? list[list.length - 1] : list.find(one => String(one.number) === arg.replace(/^#/, ''))
+    const wantedNumber = arg.replace(/^#/, '')
+    const diagram = arg === '' ? list.at(-1) : list.find(known => String(known.number) === wantedNumber)
 
     if (diagram === undefined) {
       return { text: `No diagram #${arg}. Run /mermaid list to see them.`, isTextDisplayOnly: true }
     }
 
-    const error = await open($, diagram)
+    const error = await openInRex($, diagram)
 
     return { text: error ?? `Opened diagram #${diagram.number} (${diagram.kind}) in Rex.`, isTextDisplayOnly: true }
   })
 
   on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
-    const numbers = await read($, latest)
+    const numbers = await read($, bandNumbers)
 
-    if (e.props.hasSurvey || numbers.length === 0 || (await read($, isHidden))) return next(e)
+    if (e.props.hasSurvey || numbers.length === 0 || (await read($, isBandHidden))) return next(e)
 
     const shown = (await read($, diagrams)).filter(diagram => numbers.includes(diagram.number))
 
@@ -148,7 +158,7 @@ export const register: Register = on => {
     const { Box, Button, Text } = $.ui.resolve(e)
 
     const press = async (diagram: Diagram) => {
-      const error = await open($, diagram)
+      const error = await openInRex($, diagram)
 
       if (error !== undefined) $.ui.toast(error)
     }
@@ -160,7 +170,7 @@ export const register: Register = on => {
           <Button key={`open-${diagram.number}`} label={`#${diagram.number} ${diagram.kind}`} onPress={() => press(diagram)} />
         ))}
         <Text> </Text>
-        <Button key="hide" label="Hide" onPress={() => update($, isHidden, () => true)} />
+        <Button key="hide" label="Hide" onPress={() => update($, isBandHidden, () => true)} />
       </Box>
     )
   })

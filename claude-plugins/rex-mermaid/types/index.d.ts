@@ -4,8 +4,8 @@ declare module 'claude-code' {
   interface PluginState {
     'rex-mermaid': {
       diagrams: Shaped<Diagram[]>
-      latest: Shaped<number[]>
-      isHidden: boolean
+      bandNumbers: Shaped<number[]>
+      isBandHidden: boolean
     }
   }
 }

@@ -1,6 +1,6 @@
 import { expect, mock, test } from 'claude-code/testing'
 
-import { fenced, kindOf } from '../hooks/register'
+import { diagramKind, mermaidBlocks } from '../hooks/register'
 
 const BAND = {
   plugin: 'rex-mermaid',
@@ -26,12 +26,12 @@ const MARKDOWN = [
   '~~~',
 ].join('\n')
 
-test('fenced finds backtick and tilde blocks, and kindOf skips frontmatter and comments', () => {
-  const sources = fenced(MARKDOWN)
+test('mermaidBlocks finds backtick and tilde blocks, and diagramKind skips frontmatter and comments', () => {
+  const sources = mermaidBlocks(MARKDOWN)
 
   expect(sources).toHaveLength(2)
-  expect(sources.map(kindOf)).toEqual(['flowchart', 'sequenceDiagram'])
-  expect(fenced('```python\nprint(1)\n```')).toHaveLength(0)
+  expect(sources.map(diagramKind)).toEqual(['flowchart', 'sequenceDiagram'])
+  expect(mermaidBlocks('```python\nprint(1)\n```')).toHaveLength(0)
 })
 
 test('a written file with diagrams shows a band whose buttons open them in Rex', async ($, on) => {
@@ -39,7 +39,7 @@ test('a written file with diagrams shows a band whose buttons open them in Rex',
 
   mock.env(on, { REX_SESSION: 'session:1', REX_BLOCK: 'block:1' })
   on('tool.call', () => ({ result: {} }))
-  on('process.hookEnv', () => ({ value: { CLAUDE_PLUGIN_DATA: '/data' } }))
+  on('process.hookEnv', () => ({ value: { CLAUDE_PLUGIN_DATA: '/data', CLAUDE_CODE_SESSION_ID: 'abc' } }))
   on('fs.write', () => ({ value: undefined }))
   on('process.run', (_, e) => {
     runs.push(e.argv)
@@ -56,7 +56,7 @@ test('a written file with diagrams shows a band whose buttons open them in Rex',
   await ui.press({ key: 'open-2' })
 
   expect(runs).toEqual([
-    ['rex', 'do', '-s', 'session:1', '-b', 'block:1', 'mermaid_preview', 'file=/data/diagram-2.mmd'],
+    ['rex', 'do', '-s', 'session:1', '-b', 'block:1', 'mermaid_preview', 'file=/data/diagram-abc-2.mmd'],
   ])
 
   await ui.press({ key: 'hide' })
@@ -69,7 +69,7 @@ test('a written file with diagrams shows a band whose buttons open them in Rex',
 test('/mermaid explains when there is nothing to open or no Rex around', async ($, on) => {
   mock.env(on, {})
   on('tool.call', () => ({ result: {} }))
-  on('process.hookEnv', () => ({ value: { CLAUDE_PLUGIN_DATA: '/data' } }))
+  on('process.hookEnv', () => ({ value: { CLAUDE_PLUGIN_DATA: '/data', CLAUDE_CODE_SESSION_ID: 'abc' } }))
 
   expect((await $.command.run({ command: 'mermaid', args: '' })).text).toBe('No Mermaid diagrams in this session yet.')
 

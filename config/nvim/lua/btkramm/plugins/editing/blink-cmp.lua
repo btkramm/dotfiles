@@ -15,15 +15,9 @@ return {
     },
 
     completion = {
-      documentation = {
-        auto_show = true,
-
-        window = { border = 'rounded' },
-      },
+      documentation = { auto_show = true },
 
       menu = {
-        border = 'rounded',
-
         draw = {
           gap = 0,
           padding = 0,
@@ -37,10 +31,6 @@ return {
           },
         },
       },
-    },
-
-    signature = {
-      window = { border = 'rounded' },
     },
   },
 

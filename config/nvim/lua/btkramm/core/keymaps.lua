@@ -37,9 +37,7 @@ keymap('n', '<C-o>', '<C-o>zz', { desc = 'Jump backward and center' })
 
 keymap('n', 'gf', vim.diagnostic.open_float, { desc = 'LSP - Diagnostics' })
 
-keymap('n', 'gh', function()
-  vim.lsp.buf.hover({ border = 'rounded' })
-end, { desc = 'LSP - Hover' })
+keymap('n', 'gh', vim.lsp.buf.hover, { desc = 'LSP - Hover' })
 
 keymap('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'LSP - Rename' })
 

@@ -4,7 +4,7 @@ return {
 
   config = function()
     vim.diagnostic.config({
-      float = { border = 'rounded', header = '' },
+      float = { header = '' },
       virtual_text = true,
     })
 
